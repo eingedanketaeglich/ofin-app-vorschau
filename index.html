@@ -2,7 +2,7 @@
 <!--
   BWL Kurse · OFIN · Finanzen 1 · KURS-APP (v3, Firestarter-Struktur, Ring statt Flamme)
   Gebaut 2026-07-18 aus dem Referenz-Template v01 (Optik/Logo/K3 1:1) + 9 weiteren Kapiteln.
-  Inhalte und 16-Fragen-Selbsttests 1:1 aus quellpakete/osta-komplett (Gedankenstrich-Einschuebe
+  Inhalte und 16-Fragen-Selbsttests 1:1 aus quellpakete/ofin-komplett (Gedankenstrich-Einschuebe
   normalisiert, Log: dash-log.txt). Zugang: ZUGANG='probe' (nur Kapitel 3 frei) oder 'komplett'
   (alle frei, Auslieferung unter /k/{{LIZENZ_TOKEN}}/). QA-Override: ?zugang=komplett&theme=dark
   TRANSFER-TOKENS: {{CHECKOUT_URL}} {{VORMERK_URL}} {{IMPRESSUM_URL}} {{DATENSCHUTZ_URL}}
@@ -489,7 +489,100 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
 .lsegs button.cur{background:rgba(232,118,10,.16);border:1.5px solid var(--accent)}
 .lsegs button:disabled{cursor:default;opacity:.6}
 .lcount{font-size:12px;font-weight:600;color:var(--text-3);white-space:nowrap;flex:none}
+/* ===== Freischalt-Store ===== */
+.sheet-store{max-height:92vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+#storeBody .sec-lbl{margin:18px 0 8px}
+#storeBody .sec-lbl:first-child{margin-top:6px}
+.store-status{background:var(--surface-2);border:1px solid var(--line-2);border-radius:13px;padding:12px 14px;font-size:14px;color:var(--text-2);line-height:1.5}
+.store-status b{color:var(--accent-deep)}
+[data-theme="dark"] .store-status b{color:var(--accent-2)}
+.store-anrech{background:var(--surface-2);border-radius:13px;padding:11px 13px;font-size:13.5px;color:var(--text-2);line-height:1.5;margin-bottom:8px}
+.store-anrech b{color:var(--accent-deep)}
+[data-theme="dark"] .store-anrech b{color:var(--accent-2)}
+.store-pkg{background:var(--surface);border:1px solid var(--line-2);border-radius:13px;box-shadow:var(--sh-1);padding:14px 15px;margin-bottom:10px}
+.store-pkg.feat{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),var(--sh-1)}
+.store-pkg-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.store-pkg-h b{font-size:16px}
+.store-pkg-p{font-size:20px;font-weight:700;white-space:nowrap;display:flex;flex-direction:column;align-items:flex-end;line-height:1.1}
+.store-pkg-p small{font-size:11px;font-weight:500;color:var(--text-3);text-decoration:line-through}
+.store-pkg-d{font-size:13.5px;color:var(--text-2);margin:6px 0 2px;line-height:1.45}
+.store-pkg-n{font-size:12px;color:var(--accent-deep);font-weight:600;margin:2px 0 0}
+[data-theme="dark"] .store-pkg-n{color:var(--accent-2)}
+.store-pkg-btn{margin-top:12px}
+.store-list{display:flex;flex-direction:column}
+.store-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line-2)}
+.store-row:last-child{border-bottom:0}
+.store-row-t{flex:1;min-width:0;font-size:14px;color:var(--text);line-height:1.35}
+.store-row-t b{color:var(--text)}
+.store-row-r{flex:none;margin-left:auto}
+.store-mini{min-height:38px;padding:7px 14px;font-size:14px;border-radius:11px;min-width:78px}
+.store-badge{display:inline-flex;align-items:center;font-size:12px;font-weight:700;padding:5px 11px;border-radius:999px;white-space:nowrap}
+.store-badge.free{background:var(--done-bg);color:var(--done)}
+.store-badge.owned{background:var(--done-bg);color:var(--done)}
+.store-det{width:100%}
+.store-det>summary{cursor:pointer;list-style:none;font-size:14px;color:var(--text);display:block}
+.store-det>summary::-webkit-details-marker{display:none}
+.store-det>summary::before{content:"+";display:inline-block;width:16px;color:var(--accent-deep);font-weight:800}
+[data-theme="dark"] .store-det>summary::before{color:var(--accent-2)}
+.store-det[open]>summary::before{content:"\2013"}
+.store-topics{margin:6px 0 2px 20px;padding:0}
+.store-topics li{font-size:12.5px;color:var(--text-3);margin:2px 0;list-style:disc}
+.store-link{background:none;border:0;color:var(--accent-deep);font-weight:600;font-size:13px;cursor:pointer;padding:2px 0;text-decoration:underline}
+[data-theme="dark"] .store-link{color:var(--accent-2)}
+.app-toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);z-index:120;max-width:min(440px,92vw);
+  background:var(--premium);color:var(--premium-ink);border:1px solid var(--premium-line);border-radius:14px;
+  box-shadow:var(--sh-3);padding:13px 16px;font-size:13.5px;line-height:1.5;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}
+.app-toast.on{opacity:1;transform:translate(-50%,0)}
+.app-toast.big{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),var(--sh-3)}
+.store-rabatt{background:linear-gradient(180deg,var(--accent-2),var(--accent));color:#2A1500;border-radius:13px;padding:14px 16px;font-size:14px;line-height:1.55;font-weight:600;box-shadow:var(--sh-2);margin-bottom:10px}
+.store-rabatt b{display:block;font-family:var(--serif);font-size:15px;margin-bottom:5px;color:#2A1500}
+/* Kompakte Pakete */
+.store-pkgrow{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line-2);border-radius:13px;box-shadow:var(--sh-1);padding:11px 13px;margin-bottom:8px}
+[data-theme="dark"] .store-pkgrow{border-color:var(--line)}
+.store-pkgrow.feat{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),var(--sh-1)}
+.pkgr-t{flex:1;min-width:0}
+.pkgr-t b{font-size:14.5px}
+.pkgr-t small{display:block;color:var(--text-2);font-size:12px;line-height:1.35}
+.pkgr-p{flex:none;font-weight:800;font-size:16px;white-space:nowrap;text-align:right}
+.pkgr-p s{display:block;font-weight:500;font-size:11px;color:var(--text-3)}
+.pkgr-go{flex:none;background:linear-gradient(180deg,var(--accent-2),var(--accent));color:#2A1500;border:0;border-radius:11px;font-weight:700;font-size:13px;padding:9px 12px;cursor:pointer;box-shadow:var(--sh-1);min-height:44px}
+/* Legende */
+.store-legend{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:0 0 10px;font-size:12.5px;color:var(--text-2)}
+.store-legend span{display:inline-flex;align-items:center;gap:7px}
+.store-dot{width:12px;height:12px;border-radius:4px;flex:none}
+.store-dot.l{background:var(--accent)}
+.store-dot.h{background:linear-gradient(180deg,var(--premium-2),var(--premium));box-shadow:inset 0 0 0 1px var(--premium-line)}
+/* Eine Kapitelliste mit zwei Preisen */
+.store-clist{display:flex;flex-direction:column}
+.store-crow{border-bottom:1px solid var(--line-2);padding:11px 0}
+[data-theme="dark"] .store-crow{border-color:var(--line)}
+.store-crow:last-child{border-bottom:0}
+.store-crow-top{display:flex;align-items:center;gap:10px}
+.store-cdet{flex:1;min-width:0}
+.store-cdet>summary{list-style:none;cursor:pointer;font-size:14px;color:var(--text);display:flex;align-items:center;gap:7px;line-height:1.3;min-height:36px}
+.store-cdet>summary::-webkit-details-marker{display:none}
+.store-cdet>summary .kap{font-weight:700;flex:none}
+.store-cdet>summary::after{content:"+";margin-left:4px;color:var(--accent-deep);font-weight:800;flex:none}
+[data-theme="dark"] .store-cdet>summary::after{color:var(--accent-2)}
+.store-cdet[open]>summary::after{content:"\2013"}
+.store-cdet .store-topics{margin:8px 0 2px 2px;font-size:12.5px;color:var(--text-2)}
+.store-cdet .store-topics b{color:var(--text);font-weight:600}
+.store-cdet .store-topics ul{margin:5px 0 0 16px;padding:0}
+.store-cdet .store-topics li{margin:2px 0;list-style:disc}
+.store-chips{flex:none;display:flex;gap:7px}
+.store-chip{border:0;border-radius:11px;cursor:pointer;font-family:inherit;font-weight:700;font-size:12px;padding:6px 9px;min-width:72px;min-height:44px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.15;box-shadow:var(--sh-1)}
+.store-chip small{font-weight:600;font-size:9px;letter-spacing:.04em;opacity:.85;text-transform:uppercase;margin-bottom:1px}
+.store-chip.lchip{background:linear-gradient(180deg,var(--accent-2),var(--accent));color:#2A1500}
+.store-chip.hchip{background:linear-gradient(180deg,var(--premium-2),var(--premium));color:var(--premium-ink);box-shadow:inset 0 0 0 1px var(--premium-line),var(--sh-1)}
+.store-chip.free{background:var(--done-bg);color:var(--done);box-shadow:inset 0 0 0 1px var(--done)}
+.store-chip.owned{background:var(--surface-2);color:var(--text-3);box-shadow:inset 0 0 0 1px var(--hair);cursor:default}
 
+/* --- Feinschliff v2 (2026-07-19): weniger KI-Look, editorialere Marker --- */
+.fahrplan .num{width:auto;min-width:24px;margin:0;padding:0 2px 0 0;background:none;border:none;border-radius:0;font-family:var(--serif);font-weight:600;font-size:19px;line-height:1.35;color:var(--accent);text-align:left}
+.rep-last{display:inline-block;margin-top:3px;font-size:12.5px;color:var(--text-3);font-family:var(--sans)}
+
+/* Simon 19.07.: dekorative Symbol-Icons in Lektionen komplett raus (Eyebrows, Kern, Aha, Neugier, Merke) */
+.lstep .eyebrow svg.i,.kern .ic,.aha .ah-lbl svg.i,.curio svg.i,.qq svg.i{display:none!important}
 /* ===== OMIK-Zusatz: Regelkarten, Tabellen-Scroll, Calc-Formeln, Aha-Balken ===== */
 .rulegrid{display:grid;grid-template-columns:1fr;gap:10px;margin:14px 0}
 .rulecard{background:var(--surface);border:1px solid var(--line-2);border-radius:13px;padding:13px 15px;font-size:13.5px;color:var(--text-2);box-shadow:var(--sh-1)}
@@ -504,7 +597,151 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
 .ah-bars i{display:block;height:12px;border-radius:7px;background:var(--accent);min-width:6px;transition:width .12s ease}
 .ah-bars .bar:first-child i{background:var(--silver)}
 .chartbox svg text{font-family:var(--sans)}
+
 </style>
+<style id="bkbc-css">
+/* ===== BKBC · Faecher-Paket-Konfigurator · identisch in App + Landing ===== */
+.bkbc-card{border:2px solid var(--accent);border-radius:14px;padding:14px;background:var(--surface-2);box-shadow:var(--sh-1)}
+.bkbc-h{font-weight:600;font-size:16px;margin:0 0 2px}
+.bkbc-sub{font-size:12px;color:var(--text-2);margin:0 0 10px;line-height:1.45}
+.bkbc-save{color:var(--done);font-size:12px;font-weight:600;margin-top:3px}
+.bkbc-row{display:flex;align-items:center;gap:12px;padding:11px 12px;border:1px solid var(--hair);border-radius:10px;margin:0 0 8px;cursor:pointer;background:var(--surface)}
+.bkbc-row:hover{border-color:var(--accent)}
+.bkbc-row.sel{border-color:var(--accent);background:var(--glow)}
+.bkbc-row input{width:20px;height:20px;accent-color:var(--accent);flex:none;margin:0}
+.bkbc-rt{flex:1;min-width:0}
+.bkbc-rt b{display:block;font-weight:600;font-size:14px}
+.bkbc-rt small{display:block;color:var(--text-3);font-size:12px;line-height:1.4}
+.bkbc-ho-row{margin-top:12px;border-style:dashed}
+.bkbc-sum{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin:14px 2px 10px}
+.bkbc-total{font-size:26px;font-weight:600;white-space:nowrap;line-height:1.1}
+.bkbc-cta{display:flex;width:100%;align-items:center;justify-content:center;min-height:48px;cursor:pointer;border:0;border-radius:10px;font-size:15px;font-weight:600;text-align:center;background:linear-gradient(180deg,var(--accent-2),var(--accent));color:#2A1500;box-shadow:var(--sh-1)}
+.bkbc-cta:disabled{background:var(--surface);color:var(--text-3);cursor:not-allowed;box-shadow:inset 0 0 0 1px var(--hair)}
+.bkbc-note{font-size:11.5px;color:var(--text-3);line-height:1.45;margin:10px 2px 0;text-align:center}
+</style>
+<script id="bkbc-core">
+/* =====================================================================
+   BKBC · Faecher-Paket-Konfigurator (Mehrfachauswahl + Auto-Summe)
+   ---------------------------------------------------------------------
+   ⛔ DIESER BLOCK IST IN ALLEN DATEIEN IDENTISCH:
+      App    : ofin-app-vorschau/index.html (+ omik-/ofin-app-vorschau)
+      Landing: bwlkurse-lp/index.html, osta.html, omik.html, ofin.html
+   Preise NUR hier aendern - danach in alle Dateien kopieren.
+   Checkout-Hook: window.bkbcOnCheckout(payload)
+      payload = {faecher:["OFIN",...], handouts:true|false, anzahl:N, total:Zahl}
+   ===================================================================== */
+window.BKBC = (function(){
+  "use strict";
+
+  /* ================= CONFIG (einzige Preisquelle) ================= */
+  var CFG = {
+    FAECHER: [
+      {code:"OMIK", sub:"Mikro\u00f6konomik 1"},
+      {code:"OSTA", sub:"Statistik"},
+      {code:"OFIN", sub:"Finanzen 1"}
+    ],
+    /* Staffel Klausur-Check (ohne Handouts) */
+    KLAUSURCHECK: {0:0, 1:39.90, 2:69.90, 3:89.90},
+    /* Staffel mit allen Handouts */
+    MIT_HANDOUTS: {0:0, 1:79.90, 2:99.80, 3:129.70},
+    /* "vormerken" = unverbindliche Vormerkung (kein Zahlungsanbieter aktiv)
+       "bestellen" = echter Kaufabschluss, Button-Beschriftung nach \u00a7312j BGB
+       -> auf "bestellen" umstellen, SOBALD der Checkout wirklich zahlungspflichtig ist. */
+    CTA_MODUS: "vormerken"
+  };
+  /* ================================================================ */
+
+  function fmt(n){ return n.toFixed(2).replace(".", ",") + " \u20ac"; }
+  function esc(s){
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+    });
+  }
+  function preis(anzahl, handouts){
+    var tab = handouts ? CFG.MIT_HANDOUTS : CFG.KLAUSURCHECK;
+    return (tab[anzahl] != null) ? tab[anzahl] : 0;
+  }
+
+  function markup(){
+    var rows = CFG.FAECHER.map(function(f){
+      return '<label class="bkbc-row"><input type="checkbox" class="bkbc-f" data-code="' + esc(f.code) + '">' +
+             '<span class="bkbc-rt"><b>' + esc(f.code) + '</b><small>' + esc(f.sub) + '</small></span></label>';
+    }).join("");
+    return '<div class="bkbc-card">' +
+      '<div class="bkbc-h">F\u00e4cher-Paket zusammenstellen</div>' +
+      '<p class="bkbc-sub">F\u00e4cher antippen \u2013 der Preis rechnet sich automatisch zusammen.</p>' +
+      rows +
+      '<label class="bkbc-row bkbc-ho-row"><input type="checkbox" class="bkbc-ho">' +
+        '<span class="bkbc-rt"><b>mit allen Handouts</b><small>Aufgaben-PDFs + Musterl\u00f6sungen zu jedem Kapitel</small></span></label>' +
+      '<div class="bkbc-sum">' +
+        '<div><div class="bkbc-cnt bkbc-sub" style="margin:0">Noch keine F\u00e4cher gew\u00e4hlt</div>' +
+        '<div class="bkbc-save"></div></div>' +
+        '<div class="bkbc-total">' + fmt(0) + '</div>' +
+      '</div>' +
+      '<button type="button" class="bkbc-cta" disabled>F\u00e4cher w\u00e4hlen</button>' +
+      '<div class="bkbc-msg bkbc-note"></div>' +
+    '</div>';
+  }
+
+  function bind(root){
+    var r = root || document;
+    var fs = Array.prototype.slice.call(r.querySelectorAll(".bkbc-f"));
+    if(!fs.length) return null;
+    var ho   = r.querySelector(".bkbc-ho"),
+        elT  = r.querySelector(".bkbc-total"),
+        elC  = r.querySelector(".bkbc-cnt"),
+        elS  = r.querySelector(".bkbc-save"),
+        cta  = r.querySelector(".bkbc-cta"),
+        msg  = r.querySelector(".bkbc-msg");
+    if(!ho || !elT || !cta) return null;
+
+    function upd(){
+      var picked = fs.filter(function(x){ return x.checked; });
+      var n = picked.length, h = !!ho.checked;
+      var total = preis(n, h), einzel = preis(1, h);
+      var save  = (n >= 2) ? (n * einzel - total) : 0;
+
+      fs.forEach(function(x){
+        var row = x.closest ? x.closest(".bkbc-row") : x.parentNode;
+        if(row) row.classList.toggle("sel", x.checked);
+      });
+      var hoRow = ho.closest ? ho.closest(".bkbc-row") : ho.parentNode;
+      if(hoRow) hoRow.classList.toggle("sel", h);
+
+      elT.textContent = fmt(total);
+      if(elC) elC.textContent = (n === 0)
+        ? "Noch keine F\u00e4cher gew\u00e4hlt"
+        : (n + (n === 1 ? " Fach" : " F\u00e4cher") + (h ? " \u00b7 mit allen Handouts" : " \u00b7 Klausur-Check"));
+      if(elS) elS.textContent = (save > 0) ? ("Du sparst " + fmt(save)) : "";
+
+      cta.disabled = (n === 0);
+      cta.textContent = (n === 0)
+        ? "F\u00e4cher w\u00e4hlen"
+        : ((CFG.CTA_MODUS === "bestellen" ? "Zahlungspflichtig bestellen \u00b7 " : "Paket vormerken \u00b7 ") + fmt(total));
+
+      cta._payload = {
+        faecher: picked.map(function(x){ return x.getAttribute("data-code"); }),
+        handouts: h, anzahl: n, total: total
+      };
+    }
+
+    fs.forEach(function(x){ x.addEventListener("change", upd); });
+    ho.addEventListener("change", upd);
+    cta.addEventListener("click", function(e){
+      e.preventDefault();
+      if(cta.disabled) return;
+      var p = cta._payload;
+      if(typeof window.bkbcOnCheckout === "function"){ window.bkbcOnCheckout(p); return; }
+      if(msg) msg.textContent = "Auswahl: " + p.anzahl + (p.anzahl === 1 ? " Fach" : " F\u00e4cher") +
+        (p.handouts ? " mit allen Handouts" : "") + " = " + fmt(p.total) + " (Checkout noch nicht angebunden)";
+    });
+    upd();
+    return {update: upd};
+  }
+
+  return {cfg: CFG, fmt: fmt, preis: preis, markup: markup, bind: bind};
+})();
+</script>
 </head>
 <body data-screen="hub">
 
@@ -538,6 +775,7 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
   <symbol id="k-7" viewBox="0 0 24 24"><path d="M4 19h16M4 19V5"/><path d="M5.5 15.5H12l5.5-7"/></symbol>
   <symbol id="k-8" viewBox="0 0 24 24"><path d="M4 20h16M5 8.5h14M12 3.5 5 8.5M12 3.5l7 5M7 11.5v6M12 11.5v6M17 11.5v6"/></symbol>
   <symbol id="k-9" viewBox="0 0 24 24"><rect x="5.5" y="3.8" width="13" height="16.6" rx="2.4"/><path d="M8.7 9.4l2 2 4-4.4M8.7 15.4h6.6"/></symbol>
+  
   <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7a2.5 2.5 0 0 1-2.5 2.5H9l-4 4v-4H6.5"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M9 4h6M12 4v7M8 11h8l-1.5 3.5h-5zM12 14.5V20"/></symbol>
   <symbol id="i-send" viewBox="0 0 24 24"><path d="M5 12l14-7-6 14-2.5-5.5z"/></symbol>
@@ -591,18 +829,18 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
   <div class="stats num">
     <div class="stat"><b id="statDone">0</b><span>erledigt</span></div>
     <div class="stat"><b id="cdBig">&hellip;</b><span>Tage bis Klausur</span></div>
-    <div class="stat"><b>144</b><span>Selbsttest&#8209;Fragen</span></div>
+    <div class="stat"><b>160</b><span>Selbsttest&#8209;Fragen</span></div>
   </div>
 
   <div class="sec-lbl">Leitsatz zum Tag</div>
-  <div class="leitkarte"><div class="q" id="hubQuote">Standardisieren macht aus unendlich vielen Glocken eine einzige.</div><div class="ln"></div></div>
+  <div class="leitkarte"><div class="q" id="hubQuote">Standardisieren macht aus unendlich vielen Glockenkurven eine einzige.</div><div class="ln"></div></div>
 
   <div id="hubNextWrap">
     <div class="sec-lbl">Dein nächster Schritt</div>
     <button class="nextcard" id="hubNext">
       <span class="n" id="hubNextN"><svg class="i" style="width:22px"><use href="#k-3"/></svg></span>
       <span style="flex:1">
-        <b id="hubNextT">Wahrscheinlichkeitsrechnung</b>
+        <b id="hubNextT">Anleihen, Renten &amp; Zinsstruktur</b>
         <span id="hubNextS">Laplace, bedingte Wahrscheinlichkeit, Satz von Bayes</span>
       </span>
       <span class="pill gratis" id="hubNextPill"><span class="dot"></span> gratis</span>
@@ -683,8 +921,8 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
     <span class="pill gratis"><span class="dot"></span> aktiv</span>
   </div>
   <div id="accBuyWrap">
-    <button class="btn btn-primary btn-block" style="margin:4px 0 6px" id="accBuy">OFIN komplett freischalten · 39,90&nbsp;€</button>
-    <p style="font-size:12px;color:var(--text-3);text-align:center;margin-bottom:8px" class="num">Frühbucher noch <b id="cd4" style="color:var(--text-2)">&hellip;</b>, statt 62,10&nbsp;€ im Einzelkauf (9&nbsp;&times;&nbsp;6,90&nbsp;€).</p>
+    <button class="btn btn-primary btn-block" style="margin:4px 0 6px" id="accBuy">OFIN Klausur-App freischalten · 39,90&nbsp;€</button>
+    <p style="font-size:12px;color:var(--text-3);text-align:center;margin-bottom:8px" class="num">Frühbucher noch <b id="cd4" style="color:var(--text-2)">&hellip;</b>, statt 69,00&nbsp;€ im Einzelkauf (10&nbsp;&times;&nbsp;6,90&nbsp;€).</p>
   </div>
 
   <div class="sec-lbl">Rechtliches</div>
@@ -708,7 +946,7 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
     <h3>Kontakt</h3>
     <p>E-Mail: {{KONTAKT_MAIL}}<br>Telefon: {{TELEFON}}</p>
     <h3>Umsatzsteuer</h3>
-    <p>USt-IdNr. nach § 27a UStG: {{UST_ID}}</p>
+    <p>Die Bildungsleistungen von BWLKURSE sind nach § 4 Nr. 21 Buchstabe b UStG umsatzsteuerbefreit. Eine Umsatzsteuer-Identifikationsnummer wird daher in der Regel nicht ausgewiesen.</p>
     <h3>Verantwortlich für den Inhalt</h3>
     <p>{{VERANTWORTLICH}} (§ 18 Abs. 2 MStV)</p>
     <p>BWL Kurse ist ein unabhängiges Vorbereitungsangebot und wird nicht von der Goethe-Universität Frankfurt herausgegeben.</p>
@@ -786,24 +1024,14 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
   <button class="tab" data-tab="mehr"><svg class="i"><use href="#i-gear"/></svg><span>Einstellungen</span></button>
 </nav>
 
-<!-- Vormerk-/Freischalt-Sheet (Probe-Zugang) -->
+<!-- Freischalt-Store (Kapitel, Pakete, Handouts, Q&A) -->
 <div class="sheet-ov" id="sheetOv" role="presentation">
-  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="sheet sheet-store" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
     <div class="grab" aria-hidden="true"></div>
-    <h3 id="sheetTitle">OFIN komplett freischalten</h3>
-    <p class="sub" id="sheetSub">Alle 9 Kapitel als interaktive Lektionen mit Selbsttests, dazu Live&#8209;Q&amp;A in kleiner Gruppe.</p>
-    <div class="price-line num"><span class="now">39,90&nbsp;€</span><span class="old">62,10&nbsp;€ im Einzelkauf (9&nbsp;&times;&nbsp;6,90&nbsp;€)</span></div>
-    <p class="sub num" style="margin-top:-6px">Frühbucherpreis bis 28.07.2026, im Komplettpaket inkl. 2-tägigem Präsenz-Seminar vor der Klausur. Preis umsatzsteuerfrei.</p>
-    <form id="sheetForm">
-      <div class="field"><label for="vmName">Vorname</label><input type="text" id="vmName" autocomplete="given-name" placeholder="Dein Vorname" required></div>
-      <div class="field"><label for="vmMail">E&#8209;Mail&#8209;Adresse</label><input type="email" id="vmMail" autocomplete="email" placeholder="name@beispiel.de" required></div>
-      <label class="chk"><input type="checkbox" id="vmDs" required><span>Ich bin einverstanden, dass meine Angaben zur Vormerkung verarbeitet werden. Details in der <a href="#" data-tab="datenschutz" onclick="return false" style="color:var(--accent-deep)">Datenschutzerklärung</a>.</span></label>
-      <div class="err" id="sheetErr">Bitte Vorname, E&#8209;Mail und Einverständnis ausfüllen.</div>
-      <button type="submit" class="btn btn-primary btn-block">Unverbindlich vormerken</button>
-      <button type="button" class="btn btn-ghost btn-block" style="margin-top:8px" id="sheetClose">Später</button>
-    </form>
-    <div class="ok" id="sheetOk"></div>
-    <p class="placeholder-note" style="margin-top:12px">Kostenlos und unverbindlich, es entsteht keine Zahlungspflicht. Die Übermittlung und der Checkout laufen über euer Backend ({{VORMERK_URL}}, {{CHECKOUT_URL}}), hier wird nur lokal bestätigt.</p>
+    <h3 id="sheetTitle">Freischalten</h3>
+    <div id="storeBody"></div>
+    <button type="button" class="btn btn-ghost btn-block" style="margin-top:10px" id="sheetClose">Schließen</button>
+    <p class="placeholder-note" style="margin-top:10px">Vormerkungen sind kostenlos und unverbindlich. Preise umsatzsteuerfrei.</p>
   </div>
 </div>
 
@@ -823,7 +1051,7 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
       <h2>So fühlt sich das an.</h2>
       <p class="sub">Eine Frage, ein Klick, sofort Klarheit. Genau so arbeitest du hier in jedem Kapitel.</p>
       <div class="ob-q">
-        <div class="stem">Was ist typisch für eine Nullkuponanleihe (Zerobond)?</div>
+        <div class="stem">Was gilt für das sichere Ereignis, also den gesamten Ergebnisraum &Omega;?</div>
         <div id="obQOpts"></div>
         <div class="fb" id="obQFb"></div>
       </div>
@@ -832,7 +1060,7 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
 
     <div class="ob-pane" data-pane="3">
       <h2>Kapitel 3 ist frei.</h2>
-      <p class="sub">Wahrscheinlichkeitsrechnung ist deine Gratis&#8209;Lektion: Einstieg, Rechenweg, Beispiel und der Selbsttest mit 16 Fragen. Danach entscheidest du selbst.</p>
+      <p class="sub">Anleihen, Renten &amp; Zinsstruktur ist deine Gratis&#8209;Lektion: Einstieg, Rechenweg, Beispiel und der Selbsttest mit 16 Fragen. Danach entscheidest du selbst.</p>
       <div class="ob-cta">
         <button class="btn btn-primary btn-block" id="obStart">Kapitel 3 starten <svg class="i arrow"><use href="#i-arrow"/></svg></button>
         <button class="btn btn-silver btn-block" id="obLook">Erst umsehen</button>
@@ -2287,6 +2515,7 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
 </div>
 </template>
 
+
 <script id="qbank-1" type="application/json">{"topic": "OFIN · Kapitel 1", "engine": {"startDifficulty": "mittel", "startCount": 5, "passThreshold": 3, "onPass": "schwer", "onFail": "leicht", "followupCount": 2, "moreCount": 3}, "questions": [{"id": "m1", "difficulty": "mittel", "subtopic": "Barwert", "type": "numeric", "stem": "Ein sicherer Anspruch zahlt dir in genau 1 Jahr 1320 &euro;. Der Marktzins beträgt 10 %. Wie hoch ist der Barwert heute (in &euro;)?", "answer": 1200.0, "tolerance": 0.5, "feedback": "PV = 1320 / 1,10 = <b>1.200 &euro;<\/b>. Die künftige Zahlung wird einmal durch (1+r) geteilt, das ist Diskontieren."}, {"id": "m2", "difficulty": "mittel", "subtopic": "Law of One Price", "type": "single", "stem": "Zwei sichere Anlagen liefern in jedem künftigen Zeitpunkt exakt dieselben Zahlungen. Was folgt daraus nach dem Gesetz des einheitlichen Preises?", "options": ["Beide Anlagen müssen von demselben Emittenten stammen", "Die länger laufende der beiden Anlagen muss heute mehr kosten", "Beide Anlagen müssen sich im heutigen Preis deutlich unterscheiden", "Beide Anlagen müssen heute denselben Preis haben"], "answer": "Beide Anlagen müssen heute denselben Preis haben", "feedback": "<b>Law of One Price<\/b>: Identische künftige Zahlungen müssen heute denselben Preis haben, sonst entstünde eine Arbitragemöglichkeit."}, {"id": "m3", "difficulty": "mittel", "subtopic": "Ewige Rente", "type": "numeric", "stem": "Eine ewige Rente zahlt jedes Jahr 80 &euro;. Der Marktzins beträgt 4 %. Wie hoch ist ihr Barwert heute (in &euro;)?", "answer": 2000.0, "tolerance": 1.0, "feedback": "PV = C / r = 80 / 0,04 = <b>2.000 &euro;<\/b>. Spätere Zahlungen werden immer stärker abgezinst, deshalb bleibt der Wert endlich."}, {"id": "m4", "difficulty": "mittel", "subtopic": "Kapitalwertregel", "type": "single", "stem": "Der Marktzins ist gegeben. Wann solltest du ein Investitionsprojekt nach der Kapitalwertregel durchführen?", "options": ["Wenn seine Laufzeit möglichst viele Jahre umfasst", "Wenn sein Kapitalwert kleiner als null ausfällt", "Wenn sein Kapitalwert größer als null ist", "Wenn seine Anschaffungsauszahlung möglichst gering ist"], "answer": "Wenn sein Kapitalwert größer als null ist", "feedback": "Die <b>Kapitalwertregel<\/b> lautet: durchführen, wenn NPV<sub>0<\/sub> &gt; 0, dann schafft das Projekt mehr Wert als die Anlage zum Marktzins."}, {"id": "m5", "difficulty": "mittel", "subtopic": "Zeitwert des Geldes", "type": "single", "stem": "Warum ist ein sicherer Euro heute mehr wert als ein sicherer Euro in einem Jahr?", "options": ["Künftiges Geld verliert durch Inflation stets seinen ganzen Wert", "Künftiges Geld darf grundsätzlich nicht angelegt werden", "Heutiges Geld kann zwischenzeitlich Zinsen erwirtschaften", "Heutiges Geld besitzt einen staatlich garantierten Mindestwert"], "answer": "Heutiges Geld kann zwischenzeitlich Zinsen erwirtschaften", "feedback": "Heutiges Geld kann am Kapitalmarkt <b>Zinsen erwirtschaften<\/b>, deshalb ist eine spätere Zahlung heute weniger wert (Zeitwert des Geldes)."}, {"id": "s1", "difficulty": "schwer", "subtopic": "Kapitalwert (NPV)", "type": "numeric", "stem": "Ein Projekt kostet heute 750 &euro; und zahlt in Jahr 1 440 &euro; sowie in Jahr 2 484 &euro;. Der Marktzins beträgt 10 %. Wie hoch ist der Kapitalwert (in &euro;)?", "answer": 50.0, "tolerance": 0.5, "feedback": "NPV = &minus;750 + 440 / 1,10 + 484 / 1,10<sup>2<\/sup> = &minus;750 + 400 + 400 = <b>50 &euro;<\/b> &gt; 0, durchführen."}, {"id": "s2", "difficulty": "schwer", "subtopic": "Fisher-Separation", "type": "single", "stem": "Ein vollkommener Kapitalmarkt ist gegeben. Was besagt die Fisher-Separation über die Investitionsentscheidung?", "options": ["Sie muss sich streng nach den Konsumwünschen des Eigners richten", "Sie hängt allein davon ab, wie früh der Eigner konsumieren möchte", "Sie darf erst nach einem vollständigen Konsumverzicht getroffen werden", "Sie ist unabhängig von den Konsumwünschen des Eigners möglich"], "answer": "Sie ist unabhängig von den Konsumwünschen des Eigners möglich", "feedback": "<b>Fisher-Separation<\/b>: Erst alle Projekte mit positivem NPV durchführen, danach regelt der Kapitalmarkt, <i>wann<\/i> konsumiert wird, beide Entscheidungen sind separierbar."}, {"id": "s3", "difficulty": "schwer", "subtopic": "Vollkommener Kapitalmarkt", "type": "single", "stem": "Was kennzeichnet einen vollkommenen Kapitalmarkt im Sinne dieses Kapitels?", "options": ["Kredite kosten stets deutlich mehr, als Anlagen jemals einbringen", "Anlegen und Kreditaufnahme erfolgen zum selben Einheitszins", "Jeder Anleger handelt zu einem individuell verschiedenen Zinssatz", "Anlegen ist erlaubt, eine Kreditaufnahme ist dagegen ausgeschlossen"], "answer": "Anlegen und Kreditaufnahme erfolgen zum selben Einheitszins", "feedback": "Auf dem <b>vollkommenen Kapitalmarkt<\/b> gilt ein Einheitszins für Anlage und Kredit, jede reine Geldanlage hat dann einen Kapitalwert von null."}, {"id": "s4", "difficulty": "schwer", "subtopic": "Arbitrage", "type": "single", "stem": "Was versteht man in der Finanzwirtschaft unter einer Arbitrage?", "options": ["Einen Gewinn, der erst nach sehr langer Haltedauer anfällt", "Einen sicheren Gewinn ohne eigenen Einsatz und ohne Risiko", "Einen sicheren Verlust, der durch hohe Gebühren entsteht", "Einen unsicheren Gewinn bei besonders hohem Kapitaleinsatz"], "answer": "Einen sicheren Gewinn ohne eigenen Einsatz und ohne Risiko", "feedback": "Eine <b>Arbitrage<\/b> ist ein risikoloser Gewinn ohne Netto-Kapitaleinsatz, &bdquo;geschenktes Geld&ldquo;, das funktionierende Märkte sofort beseitigen."}, {"id": "s5", "difficulty": "schwer", "subtopic": "Arbitragefreiheit", "type": "single", "stem": "Am Markt taucht kurzzeitig eine Arbitragemöglichkeit auf. Was passiert damit auf einem funktionierenden Kapitalmarkt typischerweise?", "options": ["Sie wird sofort ausgenutzt und verschwindet über die Preise", "Sie wird von der Börsenaufsicht eingefroren und amtlich verwaltet", "Sie steht nach den Marktregeln nur den Zentralbanken offen", "Sie bleibt dauerhaft bestehen und vergrößert sich mit jedem Handelstag"], "answer": "Sie wird sofort ausgenutzt und verschwindet über die Preise", "feedback": "Anleger greifen sofort zu; Kauf- und Verkaufsdruck <b>verschieben die Preise<\/b>, bis die Chance verschwunden ist. Deshalb rechnen wir mit Arbitragefreiheit."}, {"id": "s6", "difficulty": "schwer", "subtopic": "Fisher-Separation", "type": "numeric", "stem": "Ein Haushalt hat heute ein Anfangsvermögen von 1200 &euro;. Er führt alle lohnenden Projekte durch; deren Kapitalwerte summieren sich auf 150 &euro;. Der Marktzins beträgt 5 %. Wie hoch ist der maximal mögliche Konsum in t = 1 (in &euro;)?", "answer": 1417.5, "tolerance": 1.0, "feedback": "C<sub>0<\/sub><sup>max<\/sup> = 1200 + 150 = 1.350 &euro;; aufgezinst: C<sub>1<\/sub><sup>max<\/sup> = 1.350 &middot; 1,05 = <b>1.417,50 &euro;<\/b>."}, {"id": "l1", "difficulty": "leicht", "subtopic": "Barwert", "type": "single", "stem": "Was ist der Barwert einer künftigen sicheren Zahlung?", "options": ["Ihr auf heute abgezinster Wert", "Ihr Wert nach Abzug aller Steuern", "Ihr auf morgen aufgezinster Wert", "Ihr nomineller Wert am Laufzeitende"], "answer": "Ihr auf heute abgezinster Wert", "feedback": "Der <b>Barwert<\/b> (Present Value) ist der auf heute abgezinste Wert einer künftigen Zahlung, die Grundgröße jeder Bewertung."}, {"id": "l2", "difficulty": "leicht", "subtopic": "Kapitalwert (NPV)", "type": "single", "stem": "Was beschreibt der Kapitalwert (NPV) eines Investitionsprojekts?", "options": ["Den höchsten Einzelbetrag, den das Projekt jemals auszahlen wird", "Den Barwert aller Einzahlungen abzüglich der Anschaffungsauszahlung", "Den durchschnittlichen Jahresgewinn über die gesamte Laufzeit des Projekts", "Den Nennwert aller Einzahlungen ohne jede Abzinsung der Beträge"], "answer": "Den Barwert aller Einzahlungen abzüglich der Anschaffungsauszahlung", "feedback": "Der <b>Kapitalwert<\/b> ist der Barwert aller künftigen Einzahlungen minus der heutigen Anschaffungsauszahlung. Positiv &rarr; das Projekt lohnt sich."}, {"id": "l3", "difficulty": "leicht", "subtopic": "Barwert", "type": "numeric", "stem": "Wie hoch ist der Barwert von 441 &euro;, die in 2 Jahren fließen, bei einem Marktzins von 5 % (in &euro;)?", "answer": 400.0, "tolerance": 0.5, "feedback": "PV = 441 / 1,05<sup>2<\/sup> = <b>400 &euro;<\/b>."}, {"id": "l4", "difficulty": "leicht", "subtopic": "Arbitragefreiheit", "type": "single", "stem": "Ein Kapitalmarkt ist arbitragefrei. Was gilt dann für zwei identische Zahlungsströme?", "options": ["Sie sind heute grundsätzlich unverkäuflich", "Sie kosten heute überall gleich viel", "Sie kosten heute stets exakt ihren Nennwert", "Sie kosten heute je nach Anbieter verschieden viel"], "answer": "Sie kosten heute überall gleich viel", "feedback": "<b>Arbitragefreiheit<\/b> heißt: kein sicherer Gewinn ohne Einsatz. Identische Zahlungsströme müssen deshalb überall denselben Preis haben."}, {"id": "l5", "difficulty": "leicht", "subtopic": "Ewige Rente", "type": "single", "stem": "Eine ewige Rente zahlt jedes Jahr denselben Betrag C, der Marktzins ist r. Wie berechnest du ihren Barwert?", "options": ["Zahlung C multipliziert mit dem Zinssatz r", "Zahlung C multipliziert mit der Anzahl der Jahre", "Zahlung C geteilt durch die Anzahl der Jahre", "Zahlung C geteilt durch den Zinssatz r"], "answer": "Zahlung C geteilt durch den Zinssatz r", "feedback": "Barwert der <b>ewigen Rente<\/b>: PV = C / r. Die konstante Zahlung wird durch den Zinssatz geteilt, der Wert bleibt endlich."}]}</script>
 <script id="qbank-2" type="application/json">{"topic": "OFIN · Kapitel 2", "engine": {"startDifficulty": "mittel", "startCount": 5, "passThreshold": 3, "onPass": "schwer", "onFail": "leicht", "followupCount": 2, "moreCount": 3}, "questions": [{"id": "m1", "difficulty": "mittel", "subtopic": "Gordon-Growth", "type": "numeric", "stem": "Eine Aktie zahlt nächstes Jahr voraussichtlich 2,00 &euro; Dividende; danach wächst die Dividende ewig mit 3 % pro Jahr. Die Eigenkapitalkosten betragen 8 %. Wie hoch ist der faire Kurs nach Gordon-Growth (in &euro;)?", "answer": 40.0, "tolerance": 0.5, "feedback": "P<sub>0<\/sub> = D<sub>1<\/sub> / (r<sub>E<\/sub> &minus; g) = 2,00 / (0,08 &minus; 0,03) = 2,00 / 0,05 = <b>40,00 &euro;<\/b>."}, {"id": "m2", "difficulty": "mittel", "subtopic": "Bedingung der Gordon-Formel", "type": "single", "stem": "Unter welcher Bedingung liefert die Gordon-Growth-Formel einen sinnvollen (endlichen, positiven) Kurs?", "options": ["Die Wachstumsrate g liegt über den Eigenkapitalkosten r<sub>E<\/sub>", "Die Dividende D<sub>1<\/sub> liegt über den Eigenkapitalkosten r<sub>E<\/sub>", "Die Wachstumsrate g entspricht exakt den Eigenkapitalkosten r<sub>E<\/sub>", "Die Wachstumsrate g liegt unter den Eigenkapitalkosten r<sub>E<\/sub>"], "answer": "Die Wachstumsrate g liegt unter den Eigenkapitalkosten r<sub>E<\/sub>", "feedback": "Nur für <b>g &lt; r<sub>E<\/sub><\/b> konvergiert die Barwert-Summe der wachsenden Dividenden. Für g &ge; r<sub>E<\/sub> liefert die Formel keinen sinnvollen Wert."}, {"id": "m3", "difficulty": "mittel", "subtopic": "Ewige Rente", "type": "numeric", "stem": "Eine Aktie zahlt für immer eine konstante Dividende von 7,00 &euro; pro Jahr. Die Eigenkapitalkosten betragen 10 %. Wie hoch ist der faire Kurs (in &euro;)?", "answer": 70.0, "tolerance": 0.5, "feedback": "Konstante ewige Dividende = ewige Rente: P<sub>0<\/sub> = E(D) / r<sub>E<\/sub> = 7,00 / 0,10 = <b>70,00 &euro;<\/b>."}, {"id": "m4", "difficulty": "mittel", "subtopic": "Dividendendiskontierungsmodell", "type": "single", "stem": "Was besagt das Dividendendiskontierungsmodell (DDM)?", "options": ["Der Aktienkurs entspricht dem Nennwert der Aktie plus der nächsten Dividende", "Der Aktienkurs entspricht dem Buchwert des Eigenkapitals je einzelner Aktie", "Der Aktienkurs entspricht dem Barwert aller künftigen Dividenden", "Der Aktienkurs entspricht der Summe aller bisher gezahlten Dividenden"], "answer": "Der Aktienkurs entspricht dem Barwert aller künftigen Dividenden", "feedback": "Das <b>DDM<\/b> überträgt den Barwert-Gedanken auf die Aktie: Der Kurs ist der Barwert <b>aller künftigen<\/b> (erwarteten) Dividenden, abgezinst mit r<sub>E<\/sub>."}, {"id": "m5", "difficulty": "mittel", "subtopic": "Deutung von r_E", "type": "single", "stem": "Welche Größe verwendet man im Dividendenmodell als Diskontsatz r<sub>E<\/sub>?", "options": ["Den vertraglich festen Kuponsatz einer Anleihe desselben Unternehmens (Sicht der Fremdkapitalgeber)", "Den risikolosen Leitzins der Notenbank ohne jeden Risikozuschlag (Geldmarktsatz)", "Die von den Aktionären geforderte Rendite gleich riskanter Anlagen (Opportunitätskosten)", "Die erwartete Wachstumsrate der Dividende über die gesamte (unendliche) Laufzeit"], "answer": "Die von den Aktionären geforderte Rendite gleich riskanter Anlagen (Opportunitätskosten)", "feedback": "r<sub>E<\/sub> ist die <b>geforderte Eigenkapitalrendite<\/b>: der Alternativertragssatz bzw. die Opportunitätskosten der Aktionäre, aus Unternehmenssicht die EK-Kosten. Woher r<sub>E<\/sub> genau kommt, klärt das CAPM (Kapitel 6)."}, {"id": "s1", "difficulty": "schwer", "subtopic": "Ein-Perioden-Modell", "type": "numeric", "stem": "Für eine Aktie erwartet man in einem Jahr eine Dividende von 1,60 &euro; und einen Kurs von 52,40 &euro;. Die Eigenkapitalkosten betragen 8 %. Wie hoch ist der faire Kurs heute (in &euro;)?", "answer": 50.0, "tolerance": 0.5, "feedback": "P<sub>0<\/sub> = (E(D<sub>1<\/sub>) + E(P<sub>1<\/sub>)) / (1 + r<sub>E<\/sub>) = (1,60 + 52,40) / 1,08 = 54,00 / 1,08 = <b>50,00 &euro;<\/b>."}, {"id": "s2", "difficulty": "schwer", "subtopic": "Implizite Eigenkapitalkosten", "type": "numeric", "stem": "Eine Aktie kostet heute 25,00 &euro;. Für nächstes Jahr erwartet man 1,25 &euro; Dividende, danach ewiges Wachstum mit 3 % pro Jahr. Welche Eigenkapitalkosten r<sub>E<\/sub> impliziert dieser Kurs (in %)?", "answer": 8.0, "tolerance": 0.1, "feedback": "Gordon umgestellt: r<sub>E<\/sub> = D<sub>1<\/sub> / P<sub>0<\/sub> + g = 1,25 / 25,00 + 0,03 = 0,05 + 0,03 = 0,08 = <b>8 %<\/b> (Dividendenrendite + Wachstum)."}, {"id": "s3", "difficulty": "schwer", "subtopic": "Wert des Wachstums", "type": "numeric", "stem": "Eine Aktie zahlt nächstes Jahr 2,00 &euro; Dividende, die Eigenkapitalkosten betragen 10 %. Um wie viel &euro; ist die Aktie mit ewigem Dividendenwachstum von g = 5 % mehr wert als ohne Wachstum (g = 0)?", "answer": 20.0, "tolerance": 0.5, "feedback": "Mit Wachstum: 2,00 / (0,10 &minus; 0,05) = 40,00 &euro;; ohne: 2,00 / 0,10 = 20,00 &euro;. Differenz = <b>20,00 &euro;<\/b>, die Hälfte des Kurses steckt hier in der Wachstumserwartung."}, {"id": "s4", "difficulty": "schwer", "subtopic": "Grenze des Modells", "type": "single", "stem": "Warum muss im Gordon-Growth-Modell g &lt; r<sub>E<\/sub> gelten?", "options": ["Nur dann wächst der Kurs schneller als die Dividende, sonst fällt der Kurs sofort auf null", "Nur dann stimmt der Kurs mit dem Buchwert überein, sonst weicht die Bilanz vom Marktwert ab", "Nur dann bleibt die Dividende dauerhaft konstant, sonst greift die Rentenformel nicht mehr", "Nur dann konvergiert die Barwert-Summe, sonst liefert die Formel keinen sinnvollen Kurs"], "answer": "Nur dann konvergiert die Barwert-Summe, sonst liefert die Formel keinen sinnvollen Kurs", "feedback": "Wüchse die Dividende mit g &ge; r<sub>E<\/sub>, würden die Barwerte der späten Dividenden nicht mehr schrumpfen, die unendliche Summe <b>divergiert<\/b>, und der Nenner r<sub>E<\/sub> &minus; g würde null oder negativ."}, {"id": "s5", "difficulty": "schwer", "subtopic": "Sensitivität", "type": "single", "stem": "Der Nenner r<sub>E<\/sub> &minus; g einer Gordon-Bewertung schrumpft von 5 auf 4 Prozentpunkte (D<sub>1<\/sub> unverändert). Was passiert mit dem Kurs?", "options": ["Er steigt um 1 %, der Kurs ändert sich genau um die Nenner-Differenz", "Er steigt um 25 %, der Kurs ist umgekehrt proportional zum Nenner", "Er bleibt gleich, die unveränderte Dividende D<sub>1<\/sub> bestimmt den Kurs allein", "Er fällt um 20 %, ein kleinerer Nenner drückt den Barwert der Dividenden"], "answer": "Er steigt um 25 %, der Kurs ist umgekehrt proportional zum Nenner", "feedback": "P<sub>0<\/sub> = D<sub>1<\/sub>/Nenner: Aus 1/0,04 statt 1/0,05 wird der Kurs um den Faktor 0,05/0,04 = 1,25 größer, also <b>+25 %<\/b>. Kleine Änderungen von g oder r<sub>E<\/sub> haben nahe beieinander liegenden Werten eine große Hebelwirkung."}, {"id": "s6", "difficulty": "schwer", "subtopic": "Unternehmensbewertung", "type": "single", "stem": "Die Vorlesung überträgt die Logik des Dividendenmodells auf ganze Unternehmen. Wie bewertet man ein Unternehmen, dessen erwartete Gewinne E(G) ewig konstant bleiben?", "options": ["V<sub>0<\/sub> = r<sub>WACC<\/sub> / E(G), den Kapitalkostensatz durch die Gewinne teilen", "V<sub>0<\/sub> = E(G) / r<sub>WACC<\/sub>, erwartete Gewinne durch den Kapitalkostensatz teilen", "V<sub>0<\/sub> = E(G) &minus; r<sub>WACC<\/sub>, vom erwarteten Gewinn den Kapitalkostensatz abziehen", "V<sub>0<\/sub> = E(G) &middot; r<sub>WACC<\/sub>, erwartete Gewinne mit dem Kapitalkostensatz aufzinsen"], "answer": "V<sub>0<\/sub> = E(G) / r<sub>WACC<\/sub>, erwartete Gewinne durch den Kapitalkostensatz teilen", "feedback": "Wie bei der ewigen Dividende gilt: <b>V<sub>0<\/sub> = E(G) / r<sub>WACC<\/sub><\/b>, dieselbe Ewigkeits-Formel, nur mit Gewinnen statt Dividenden und dem gewichteten Kapitalkostensatz."}, {"id": "l1", "difficulty": "leicht", "subtopic": "Grundidee", "type": "single", "stem": "Was ist eine Aktie aus Sicht der Bewertung in diesem Kapitel?", "options": ["Ein Anspruch auf die künftigen Dividenden des Unternehmens", "Ein Anspruch auf Rückzahlung des Nennwerts am Laufzeitende", "Ein Anspruch auf einen staatlich garantierten Mindestkurs", "Ein Anspruch auf feste Zinszahlungen über eine feste Laufzeit"], "answer": "Ein Anspruch auf die künftigen Dividenden des Unternehmens", "feedback": "Eine Aktie verbrieft den Anspruch auf die <b>künftigen Ausschüttungen<\/b> (Dividenden). Feste Zinsen und Nennwert-Rückzahlung kennzeichnen dagegen Anleihen (Kapitel 3)."}, {"id": "l2", "difficulty": "leicht", "subtopic": "Sonderfall g = 0", "type": "single", "stem": "Setzt man in der Gordon-Growth-Formel die Wachstumsrate g = 0, was erhält man?", "options": ["Die Formel der ewigen Rente: P<sub>0<\/sub> = E(D) / r<sub>E<\/sub>", "Die Aufzinsungsformel des Endwerts: P<sub>T<\/sub> = P<sub>0<\/sub> &middot; (1 + r<sub>E<\/sub>)", "Die Kapitalwertformel der Investition: NPV = &minus;A<sub>0<\/sub> + E / i", "Die Ein-Perioden-Formel: P<sub>0<\/sub> = E(P<sub>1<\/sub>) / (1 + g)"], "answer": "Die Formel der ewigen Rente: P<sub>0<\/sub> = E(D) / r<sub>E<\/sub>", "feedback": "Mit g = 0 wird aus D<sub>1<\/sub> / (r<sub>E<\/sub> &minus; g) gerade <b>E(D) / r<sub>E<\/sub><\/b>, die ewige Rente mit konstanter Zahlung ist der Spezialfall der Gordon-Formel."}, {"id": "l3", "difficulty": "leicht", "subtopic": "Bedeutung von g", "type": "single", "stem": "Wofür steht g im Gordon-Growth-Modell?", "options": ["Für den einbehaltenen Anteil des Jahresgewinns der Firma", "Für die konstante Wachstumsrate der Dividende", "Für die von den Gläubigern geforderte Fremdkapitalverzinsung", "Für die jährliche Schwankungsbreite des Aktienkurses"], "answer": "Für die konstante Wachstumsrate der Dividende", "feedback": "g ist die <b>Wachstumsrate der Dividende<\/b> (so wörtlich auf der Vorlesungsfolie): die Rate, mit der die Ausschüttung Jahr für Jahr ewig weiterwächst."}, {"id": "l4", "difficulty": "leicht", "subtopic": "Wirkung von r_E", "type": "single", "stem": "Die Eigenkapitalkosten r<sub>E<\/sub> steigen, D<sub>1<\/sub> und g bleiben unverändert. Was passiert mit dem Gordon-Kurs P<sub>0<\/sub>?", "options": ["Der Kurs bleibt gleich, weil sich nur der Zähler der Formel ändert", "Der Kurs sinkt, weil künftige Dividenden stärker abgezinst werden", "Der Kurs sinkt erst dann, wenn auch die Dividende gesenkt wird", "Der Kurs steigt, weil die Anleger nun höhere Renditen erhalten"], "answer": "Der Kurs sinkt, weil künftige Dividenden stärker abgezinst werden", "feedback": "Ein höheres r<sub>E<\/sub> vergrößert den Nenner r<sub>E<\/sub> &minus; g, die künftigen Dividenden werden stärker abgezinst, der faire Kurs <b>sinkt<\/b>."}, {"id": "l5", "difficulty": "leicht", "subtopic": "Gordon-Growth", "type": "numeric", "stem": "Eine Aktie zahlt nächstes Jahr 1,00 &euro; Dividende, die danach ewig mit 2 % pro Jahr wächst. Die Eigenkapitalkosten betragen 6 %. Wie hoch ist der faire Kurs (in &euro;)?", "answer": 25.0, "tolerance": 0.5, "feedback": "P<sub>0<\/sub> = 1,00 / (0,06 &minus; 0,02) = 1,00 / 0,04 = <b>25,00 &euro;<\/b>."}]}</script>
 <script id="qbank-3" type="application/json">{"topic": "OFIN · Kapitel 3", "engine": {"startDifficulty": "mittel", "startCount": 5, "passThreshold": 3, "onPass": "schwer", "onFail": "leicht", "followupCount": 2, "moreCount": 3}, "questions": [{"id": "m1", "difficulty": "mittel", "subtopic": "Ewige Rente", "type": "numeric", "stem": "Eine ewige Rente zahlt jedes Jahr 60 &euro;. Der Marktzins beträgt 6 %. Wie hoch ist ihr heutiger Barwert (in &euro;)?", "answer": 1000.0, "tolerance": 1.0, "feedback": "PV = C / r = 60 / 0,06 = <b>1.000 &euro;<\/b>. Spätere Zahlungen werden immer stärker abgezinst, daher ist der Wert endlich."}, {"id": "m2", "difficulty": "mittel", "subtopic": "Zinsstrukturkurve", "type": "single", "stem": "Was zeigt eine normale (steigende) Zinsstrukturkurve?", "options": ["Längere Laufzeiten haben einen höheren Zinssatz als kürzere", "Alle Laufzeiten haben exakt denselben einheitlichen Zinssatz", "Längere Laufzeiten haben einen niedrigeren Zinssatz als kürzere", "Der Zinssatz hängt allein vom Kupon der jeweiligen Anleihe ab"], "answer": "Längere Laufzeiten haben einen höheren Zinssatz als kürzere", "feedback": "Bei einer <b>normalen<\/b> Zinsstruktur steigt der Kassazins r<sub>t<\/sub> mit der Laufzeit, länger gebundenes Geld wird also höher verzinst."}, {"id": "m3", "difficulty": "mittel", "subtopic": "Nullkuponanleihe", "type": "numeric", "stem": "Eine Nullkuponanleihe zahlt in 4 Jahren ihren Nominalwert von 1.000 &euro; zurück. Der Marktzins beträgt 5 %. Wie hoch ist ihr heutiger Kurs (in &euro;)?", "answer": 822.7, "tolerance": 0.5, "feedback": "Kurs = 1.000 / 1,05<sup>4<\/sup> = <b>822,70 &euro;<\/b>. Eine Nullkuponanleihe hat nur eine einzige Zahlung ganz am Ende."}, {"id": "m4", "difficulty": "mittel", "subtopic": "Kurs unter pari", "type": "single", "stem": "Eine Kuponanleihe notiert unter pari (unter 100 %). Was folgt daraus?", "options": ["Ihr Kuponsatz liegt genau auf dem aktuellen Marktzins", "Ihr Kuponsatz liegt unter dem aktuellen Marktzins", "Ihr Kuponsatz liegt oberhalb des aktuellen Marktzinses", "Ihr Nominalwert wurde nach der Emission dauerhaft gesenkt"], "answer": "Ihr Kuponsatz liegt unter dem aktuellen Marktzins", "feedback": "Liegt der <b>Kuponsatz unter dem Marktzins<\/b>, ist die Anleihe für Anleger unattraktiv, ihr Kurs fällt unter den Nominalwert (unter pari)."}, {"id": "m5", "difficulty": "mittel", "subtopic": "Ewige Rente", "type": "single", "stem": "Wie berechnet man den Barwert einer ewigen Rente mit konstanter Zahlung?", "options": ["Man multipliziert die jährliche Zahlung mit dem Zinssatz", "Man multipliziert die jährliche Zahlung mit der Laufzeit", "Man teilt die jährliche Zahlung durch den Zinssatz", "Man teilt die jährliche Zahlung durch die Anzahl der Jahre"], "answer": "Man teilt die jährliche Zahlung durch den Zinssatz", "feedback": "Barwert der ewigen Rente: PV = C / r. Die Zahlung wird durch den Zinssatz geteilt."}, {"id": "s1", "difficulty": "schwer", "subtopic": "Rentenbarwert (Annuität)", "type": "numeric", "stem": "Eine Rente zahlt 3 Jahre lang je 100 &euro; (nachschüssig). Der Zins beträgt 10 %. Wie hoch ist der Rentenbarwert (in &euro;)?", "answer": 248.69, "tolerance": 0.5, "feedback": "PV = (C / r) &middot; (1 &minus; (1+r)<sup>&minus;T<\/sup>) = (100 / 0,10) &middot; (1 &minus; 1,10<sup>&minus;3<\/sup>) = 1.000 &middot; 0,2487 = <b>248,69 &euro;<\/b>."}, {"id": "s2", "difficulty": "schwer", "subtopic": "Kuponanleihe", "type": "numeric", "stem": "Eine Kuponanleihe (Nominal 100 &euro;, Kupon 6 %, Laufzeit 2 Jahre) wird bei einem Marktzins von 4 % bewertet. Wie hoch ist ihr Kurs (in &euro;)?", "answer": 103.77, "tolerance": 0.5, "feedback": "Kurs = 6 / 1,04 + 106 / 1,04<sup>2<\/sup> = <b>103,77 &euro;<\/b>, über pari, da der Kupon (6 %) über dem Marktzins (4 %) liegt."}, {"id": "s3", "difficulty": "schwer", "subtopic": "Effektivrendite (IRR)", "type": "single", "stem": "Was ist die Effektivrendite (Rendite bzw. IRR) einer Anleihe?", "options": ["Das Verhältnis von jährlichem Kupon zum aktuellen Nominalwert der Anleihe", "Der über die gesamte Laufzeit gemittelte Marktkurs der Anleihe", "Der Zinssatz, bei dem der Kurs dem Barwert aller Zahlungen entspricht", "Der feste Kuponsatz, den der Emittent jedes Jahr an die Gläubiger auszahlt"], "answer": "Der Zinssatz, bei dem der Kurs dem Barwert aller Zahlungen entspricht", "feedback": "Die <b>Effektivrendite<\/b> ist der interne Zinsfuß (IRR): der Zins, bei dem der Kurs gerade gleich dem Barwert aller künftigen Zahlungen ist (NPV = 0)."}, {"id": "s4", "difficulty": "schwer", "subtopic": "Rendite (IRR)", "type": "numeric", "stem": "Ein Zerobond kostet heute 950 &euro; und wird in 1 Jahr zu 1.000 &euro; zurückgezahlt. Wie hoch ist die Effektivrendite (in %)?", "answer": 5.26, "tolerance": 0.05, "feedback": "r = 1.000 / 950 &minus; 1 = 0,0526 = <b>5,26 %<\/b>."}, {"id": "s5", "difficulty": "schwer", "subtopic": "Schwäche der IRR-Regel", "type": "single", "stem": "Warum kann die IRR-Regel bei einer Zahlungsreihe mit mehrfachem Vorzeichenwechsel versagen?", "options": ["Es können mehrere interne Zinsfüße existieren, die Regel wird mehrdeutig", "Der Kupon einer solchen Zahlungsreihe wird nach dem Wechsel immer negativ", "Die Laufzeit einer solchen Zahlungsreihe ist grundsätzlich unendlich lang", "Der Barwert einer solchen Zahlungsreihe lässt sich grundsätzlich nicht bestimmen"], "answer": "Es können mehrere interne Zinsfüße existieren, die Regel wird mehrdeutig", "feedback": "Bei einer Nicht-Normalinvestition (mehrfacher Vorzeichenwechsel) kann die NPV-Kurve die Nulllinie mehrfach schneiden, es gibt <b>mehrere IRR<\/b>. Dann ist die Kapitalwertmethode vorzuziehen."}, {"id": "s6", "difficulty": "schwer", "subtopic": "Inverse Zinsstruktur", "type": "single", "stem": "Was kennzeichnet eine inverse Zinsstrukturkurve?", "options": ["Kurze Laufzeiten werden niedriger verzinst als lange Laufzeiten", "Kurze Laufzeiten werden höher verzinst als lange Laufzeiten", "Nur die jeweils längste Laufzeit trägt überhaupt einen Zinssatz", "Alle Laufzeiten werden mit genau demselben Zinssatz verzinst"], "answer": "Kurze Laufzeiten werden höher verzinst als lange Laufzeiten", "feedback": "Bei einer <b>inversen<\/b> Zinsstruktur liegen die kurzfristigen Zinsen über den langfristigen, die Kurve fällt mit der Laufzeit."}, {"id": "l1", "difficulty": "leicht", "subtopic": "Nullkuponanleihe", "type": "single", "stem": "Was ist typisch für eine Nullkuponanleihe (Zerobond)?", "options": ["Sie zahlt jedes Jahr einen besonders hohen laufenden Kupon aus", "Sie zahlt keine laufenden Kupons, nur den Nominalwert am Ende", "Sie besitzt weder einen Nominalwert noch eine feste Laufzeit", "Sie zahlt den Nominalwert schon bei der Emission vollständig zurück"], "answer": "Sie zahlt keine laufenden Kupons, nur den Nominalwert am Ende", "feedback": "Eine <b>Nullkuponanleihe<\/b> hat keine laufenden Zinszahlungen; ihr Ertrag entsteht nur aus der Differenz zwischen Kaufkurs und Rückzahlung zum Nominalwert."}, {"id": "l2", "difficulty": "leicht", "subtopic": "Diskontieren", "type": "single", "stem": "Was bedeutet Diskontieren (Abzinsen) einer künftigen Zahlung?", "options": ["Ihren Betrag jedes Jahr um denselben festen Eurobetrag kürzen", "Ihren Nennbetrag ohne jeden Zinseffekt direkt auf heute übertragen", "Ihren künftigen Wert bestimmen, der größer als der Nennbetrag ist", "Ihren heutigen Wert bestimmen, der kleiner als der Nennbetrag ist"], "answer": "Ihren heutigen Wert bestimmen, der kleiner als der Nennbetrag ist", "feedback": "<b>Diskontieren<\/b> rechnet eine künftige Zahlung auf den Barwert heute zurück. Wegen des Zinses ist dieser Barwert kleiner als der spätere Nennbetrag."}, {"id": "l3", "difficulty": "leicht", "subtopic": "Barwert", "type": "numeric", "stem": "Wie hoch ist der Barwert von 500 &euro;, die in 2 Jahren fließen, bei einem Zins von 5 % (in &euro;)?", "answer": 453.51, "tolerance": 0.5, "feedback": "PV = 500 / 1,05<sup>2<\/sup> = <b>453,51 &euro;<\/b>."}, {"id": "l4", "difficulty": "leicht", "subtopic": "Kupon", "type": "single", "stem": "Was bezeichnet der Kupon einer Anleihe?", "options": ["Den einmaligen Rückzahlungsbetrag ganz am Ende der Laufzeit", "Den Kurs, zu dem die Anleihe aktuell am Markt gehandelt wird", "Die feste periodische Zinszahlung an den Anleihegläubiger", "Die Differenz zwischen Kaufkurs und dem späteren Verkaufskurs"], "answer": "Die feste periodische Zinszahlung an den Anleihegläubiger", "feedback": "Der <b>Kupon<\/b> ist die regelmäßige, feste Zinszahlung (Kuponsatz &times; Nominalwert), die der Emittent an den Gläubiger leistet."}, {"id": "l5", "difficulty": "leicht", "subtopic": "Annuität", "type": "single", "stem": "Was ist eine Annuität (endliche Rente)?", "options": ["Eine einzige Zahlung, die erst ganz am Ende der Laufzeit fällig ist", "Eine Folge unendlich vieler, stetig steigender Einzelzahlungen", "Eine Zahlung, deren Höhe jedes Jahr neu ausgehandelt wird", "Eine Folge gleich hoher Zahlungen über eine feste Laufzeit"], "answer": "Eine Folge gleich hoher Zahlungen über eine feste Laufzeit", "feedback": "Eine <b>Annuität<\/b> ist eine Reihe gleich hoher Zahlungen über eine begrenzte Laufzeit, z. B. die Kupons einer Anleihe."}]}</script>
@@ -2297,11 +2526,13 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
 <script id="qbank-8" type="application/json">{"topic": "OFIN · Kapitel 8", "engine": {"startDifficulty": "mittel", "startCount": 5, "passThreshold": 3, "onPass": "schwer", "onFail": "leicht", "followupCount": 2, "moreCount": 3}, "questions": [{"id": "m1", "difficulty": "mittel", "subtopic": "Modigliani-Miller II", "type": "numeric", "stem": "Ein Unternehmen hat durchschnittliche Kapitalkosten r<sub>wacc<\/sub> = 8 %, einen Fremdkapitalzins r<sub>D<\/sub> = 3 % und einen Verschuldungsgrad l = FK/EK = 0,5. Wie hoch ist die geforderte Eigenkapitalrendite r<sub>E<\/sub> (in %)?", "answer": 10.5, "tolerance": 0.05, "feedback": "MM II: r<sub>E<\/sub> = r<sub>wacc<\/sub> + (r<sub>wacc<\/sub> &minus; r<sub>D<\/sub>)&middot;l = 8 % + (8 % &minus; 3 %)&middot;0,5 = <b>10,5 %<\/b>. Mehr Verschuldung hebt die EK-Renditeforderung."}, {"id": "m2", "difficulty": "mittel", "subtopic": "Modigliani-Miller I", "type": "single", "stem": "Was besagt das Modigliani-Miller-Theorem I im vollkommenen Kapitalmarkt (ohne Steuern)?", "options": ["Der Gesamtwert des Unternehmens ist im vollkommenen Markt unabhängig von der Kapitalstruktur", "Der Gesamtwert des Unternehmens wächst im vollkommenen Markt immer weiter mit dem Fremdkapitalanteil", "Der Gesamtwert des Unternehmens sinkt im vollkommenen Markt stetig mit zunehmender Verschuldung ab", "Der Gesamtwert des Unternehmens richtet sich im vollkommenen Markt allein nach dem Eigenkapitalanteil"], "answer": "Der Gesamtwert des Unternehmens ist im vollkommenen Markt unabhängig von der Kapitalstruktur", "feedback": "MM I: In der perfekten Welt verändert die Aufteilung in EK und FK den Unternehmenswert nicht, &bdquo;wie man die Pizza schneidet, macht sie nicht größer&ldquo;."}, {"id": "m3", "difficulty": "mittel", "subtopic": "Tax Shield", "type": "single", "stem": "Wodurch entsteht der Steuervorteil der Fremdfinanzierung (Tax Shield)?", "options": ["Dividenden mindern als Aufwand den steuerpflichtigen Gewinn, die Fremdkapitalzinsen dagegen nicht", "Fremdkapitalzinsen mindern als Aufwand den steuerpflichtigen Gewinn, Dividenden dagegen nicht", "Sowohl die Fremdkapitalzinsen als auch die Dividenden mindern den steuerpflichtigen Gewinn gleich stark", "Weder die Fremdkapitalzinsen noch die Dividenden mindern den steuerpflichtigen Gewinn des Unternehmens"], "answer": "Fremdkapitalzinsen mindern als Aufwand den steuerpflichtigen Gewinn, Dividenden dagegen nicht", "feedback": "Zinsen sind steuerlich abzugsfähiger Aufwand, Gewinnausschüttungen an die EK-Geber nicht, deshalb spart Fremdkapital Steuern."}, {"id": "m4", "difficulty": "mittel", "subtopic": "WACC", "type": "numeric", "stem": "Ein Unternehmen finanziert sich zu 60 % mit Eigenkapital (EK/V = 0,6) und zu 40 % mit Fremdkapital. Die Eigenkapitalrendite ist r<sub>E<\/sub> = 12 %, der Fremdkapitalzins r<sub>D<\/sub> = 5 %. Wie hoch sind die durchschnittlichen Kapitalkosten r<sub>wacc<\/sub> (in %)?", "answer": 9.2, "tolerance": 0.05, "feedback": "r<sub>wacc<\/sub> = EK/V&middot;r<sub>E<\/sub> + FK/V&middot;r<sub>D<\/sub> = 0,6&middot;12 % + 0,4&middot;5 % = 7,2 % + 2,0 % = <b>9,2 %<\/b>."}, {"id": "m5", "difficulty": "mittel", "subtopic": "EK vs. FK", "type": "single", "stem": "Welche Aussage über die Fremdkapitalgeber eines Unternehmens trifft zu?", "options": ["Sie tragen das volle unternehmerische Risiko und entscheiden über die Geschäftsführung mit", "Sie erhalten eine gewinnabhängige Ausschüttung und dürfen über die Verwendung des Gewinns bestimmen", "Sie haben einen Rechtsanspruch auf Zins und Tilgung, besitzen aber keine Mitspracherechte", "Sie werden erst nach den Eigenkapitalgebern bedient und hoffen vor allem auf hohe Dividenden"], "answer": "Sie haben einen Rechtsanspruch auf Zins und Tilgung, besitzen aber keine Mitspracherechte", "feedback": "FK-Geber erhalten <b>immer zuerst<\/b> ihr Geld (Zins + Tilgung) und haben einen Rechtsanspruch darauf, aber keine Mitspracherechte. EK-Geber tragen das Risiko und hoffen auf Dividenden."}, {"id": "s1", "difficulty": "schwer", "subtopic": "Barwert Tax Shield", "type": "numeric", "stem": "Ein Unternehmen hält dauerhaft Fremdkapital von 80 Mio. Euro. Der Unternehmensteuersatz beträgt &tau; = 25 %. Wie hoch ist der Barwert des Steuervorteils (Tax Shield) bei dauerhaftem Fremdkapital (in Mio. Euro)?", "answer": 20.0, "tolerance": 0.5, "feedback": "Bei dauerhaftem FK gilt: Barwert Tax Shield = &tau;&middot;FK = 0,25&middot;80 = <b>20 Mio. Euro<\/b>. Die jährliche Ersparnis &tau;&middot;r<sub>D<\/sub>&middot;FK wird mit r<sub>D<\/sub> ewig abgezinst."}, {"id": "s2", "difficulty": "schwer", "subtopic": "Unternehmenswert mit Steuern", "type": "numeric", "stem": "Der unverschuldete Unternehmenswert beträgt V<sub>U<\/sub> = 200 Mio. Euro. Bei einem Steuersatz &tau; = 25 % nimmt das Unternehmen dauerhaftes Fremdkapital von 80 Mio. Euro auf. Wie hoch ist der Unternehmenswert mit Verschuldung V<sub>L<\/sub> (in Mio. Euro)?", "answer": 220.0, "tolerance": 0.5, "feedback": "V<sub>L<\/sub> = V<sub>U<\/sub> + &tau;&middot;FK = 200 + 0,25&middot;80 = 200 + 20 = <b>220 Mio. Euro<\/b>. Der Tax Shield hebt den Wert über den unverschuldeten Fall."}, {"id": "s3", "difficulty": "schwer", "subtopic": "WACC bleibt konstant", "type": "single", "stem": "Warum bleiben die Kapitalkosten r<sub>wacc<\/sub> im vollkommenen Markt trotz steigender Verschuldung konstant?", "options": ["Die Eigenkapitalrendite bleibt bei steigender Verschuldung unverändert und lässt die Kapitalkosten gleich", "Das Geschäftsrisiko des Unternehmens verschwindet, sobald ein Teil mit Fremdkapital finanziert wird", "Der wachsende Anteil des billigen Fremdkapitals gleicht die steigende Eigenkapitalrendite genau aus", "Der Fremdkapitalzins sinkt mit zunehmender Verschuldung und senkt so die durchschnittlichen Kapitalkosten"], "answer": "Der wachsende Anteil des billigen Fremdkapitals gleicht die steigende Eigenkapitalrendite genau aus", "feedback": "Mehr billiges FK zieht r<sub>wacc<\/sub> nach unten, die zugleich steigende Renditeforderung r<sub>E<\/sub> zieht ihn nach oben, beides hebt sich exakt auf. r<sub>wacc<\/sub> hängt nur vom Geschäftsrisiko ab."}, {"id": "s4", "difficulty": "schwer", "subtopic": "Relevering des Beta", "type": "numeric", "stem": "Das Asset-Beta (Beta des unverschuldeten Unternehmens) beträgt &beta;<sub>A<\/sub> = 0,8. Der Verschuldungsgrad ist l = FK/EK = 0,5, das Fremdkapital-Beta &beta;<sub>FK<\/sub> = 0. Wie hoch ist das Eigenkapital-Beta &beta;<sub>EK<\/sub>?", "answer": 1.2000000000000002, "tolerance": 0.01, "feedback": "&beta;<sub>EK<\/sub> = &beta;<sub>A<\/sub>&middot;(1 + l) = 0,8&middot;(1 + 0,5) = 0,8&middot;1,5 = <b>1,2<\/b>. Verschuldung hebelt das systematische Risiko des Eigenkapitals nach oben."}, {"id": "s5", "difficulty": "schwer", "subtopic": "Trade-off-Theorie", "type": "single", "stem": "Wo liegt in der Trade-off-Theorie die optimale Kapitalstruktur?", "options": ["Dort, wo der zusätzliche Steuervorteil gerade den zusätzlichen erwarteten Insolvenzkosten entspricht", "Dort, wo der Fremdkapitalzins seinen höchsten Wert über die gesamte Laufzeit des Kredits erreicht hat", "Dort, wo die Eigenkapitalgeber keine Dividende mehr fordern und auf ihre Mitspracherechte verzichten", "Dort, wo das gesamte Fremdkapital durch das vorhandene Eigenkapital des Unternehmens ersetzt worden ist"], "answer": "Dort, wo der zusätzliche Steuervorteil gerade den zusätzlichen erwarteten Insolvenzkosten entspricht", "feedback": "Optimum: Grenz-Steuervorteil = erwartete Grenz-Insolvenzkosten. Bis dahin zahlt sich mehr FK aus, danach überwiegen die drohenden Insolvenzkosten."}, {"id": "s6", "difficulty": "schwer", "subtopic": "Arbitrage-Beweis", "type": "single", "stem": "Zwei Unternehmen A und B haben identische Geschäftsrisiken und Zahlungsströme, aber unterschiedliche Kapitalstrukturen. Warum müssen sie im vollkommenen Markt denselben Wert haben?", "options": ["Weil beide Unternehmen von Gesetzes wegen denselben bilanziellen Buchwert des Eigenkapitals ausweisen", "Sonst ließe sich durch Leerverkauf des teureren und Kauf des billigeren risikolos ein Gewinn erzielen", "Weil die Eigenkapitalgeber beider Unternehmen exakt dieselbe Dividende je Aktie ausgezahlt bekommen", "Weil ein höherer Fremdkapitalanteil die künftigen Zahlungsströme des Unternehmens messbar vergrößert"], "answer": "Sonst ließe sich durch Leerverkauf des teureren und Kauf des billigeren risikolos ein Gewinn erzielen", "feedback": "Wären die Werte verschieden, entstünde eine risikolose Arbitrage: teures Unternehmen leerverkaufen, billiges kaufen. Im Gleichgewicht gilt daher V<sub>A<\/sub> = V<sub>B<\/sub>."}, {"id": "l1", "difficulty": "leicht", "subtopic": "Verschuldungsgrad", "type": "single", "stem": "Was bezeichnet der Verschuldungsgrad (Leverage) l = FK/EK?", "options": ["Das Verhältnis von Eigenkapital zum gesamten Unternehmenswert", "Das Verhältnis von Fremdkapital zu Eigenkapital eines Unternehmens", "Die Differenz zwischen Eigenkapitalrendite und dem Fremdkapitalzins", "Den Anteil der jährlichen Dividende am ausgewiesenen Jahresgewinn"], "answer": "Das Verhältnis von Fremdkapital zu Eigenkapital eines Unternehmens", "feedback": "Der Verschuldungsgrad l = FK/EK setzt das Fremdkapital ins Verhältnis zum Eigenkapital, er misst, wie stark ein Unternehmen &bdquo;gehebelt&ldquo; ist."}, {"id": "l2", "difficulty": "leicht", "subtopic": "EK-Geber", "type": "single", "stem": "Worauf hoffen die Eigenkapitalgeber eines Unternehmens vor allem?", "options": ["Auf einen Rechtsanspruch auf Zins und Tilgung ganz ohne unternehmerisches Risiko", "Auf eine feste, vom Gewinn unabhängige Verzinsung ihres eingesetzten Kapitals", "Auf feste Zinszahlungen, und sie werden im Insolvenzfall immer als Erste bedient", "Auf Dividenden aus dem Gewinn, und sie besitzen Mitspracherechte im Unternehmen"], "answer": "Auf Dividenden aus dem Gewinn, und sie besitzen Mitspracherechte im Unternehmen", "feedback": "EK-Geber sind am Unternehmen beteiligt: Sie hoffen auf Dividenden (Gewinnausschüttungen) und haben Mitspracherechte, tragen dafür aber das Risiko."}, {"id": "l3", "difficulty": "leicht", "subtopic": "r_E größer r_D", "type": "single", "stem": "Warum ist die geforderte Eigenkapitalrendite r<sub>E<\/sub> höher als der Fremdkapitalzins r<sub>D<\/sub>?", "options": ["Eigenkapital wird vor dem Fremdkapital bedient und trägt daher spürbar weniger Risiko", "Eigenkapital ist gesetzlich immer risikolos und wird deshalb besonders hoch verzinst", "Eigenkapital wird erst nach dem Fremdkapital bedient und trägt daher mehr Risiko", "Eigenkapital hat stets eine feste Verzinsung, die knapp über dem Fremdkapitalzins liegt"], "answer": "Eigenkapital wird erst nach dem Fremdkapital bedient und trägt daher mehr Risiko", "feedback": "EK haftet nachrangig: FK-Geber werden zuerst bedient. Für dieses höhere Risiko verlangen EK-Geber eine höhere Rendite, deshalb ist r<sub>E<\/sub> &gt; r<sub>D<\/sub>."}, {"id": "l4", "difficulty": "leicht", "subtopic": "Steuern und Wert", "type": "single", "stem": "Warum kann Fremdkapital bei Berücksichtigung von Steuern den Unternehmenswert erhöhen?", "options": ["Weil das Fremdkapital im Gegensatz zum Eigenkapital niemals wieder zurückgezahlt werden muss", "Weil ein hoher Fremdkapitalanteil das Insolvenzrisiko des Unternehmens deutlich verringert", "Weil die Fremdkapitalgeber dem Unternehmen ein Mitspracherecht an der Geschäftsleitung geben", "Weil die Fremdkapitalzinsen den steuerpflichtigen Gewinn senken und so Steuern sparen"], "answer": "Weil die Fremdkapitalzinsen den steuerpflichtigen Gewinn senken und so Steuern sparen", "feedback": "Der abzugsfähige Zins mindert die Steuerlast (Tax Shield). Dieser Vorteil fließt den Kapitalgebern zu und hebt den Unternehmenswert: V<sub>L<\/sub> = V<sub>U<\/sub> + &tau;&middot;FK."}, {"id": "l5", "difficulty": "leicht", "subtopic": "Grenze der Verschuldung", "type": "single", "stem": "Was begrenzt in der Trade-off-Theorie die Verschuldung nach oben?", "options": ["Der mit der Verschuldung wachsende steuerliche Vorteil des Fremdkapitals", "Die mit der Verschuldung sinkende geforderte Eigenkapitalrendite", "Die mit der Verschuldung steigenden erwarteten Insolvenzkosten", "Der mit der Verschuldung fallende Fremdkapitalzins der Gläubiger"], "answer": "Die mit der Verschuldung steigenden erwarteten Insolvenzkosten", "feedback": "Je höher die Verschuldung, desto wahrscheinlicher und teurer wird eine Insolvenz. Diese erwarteten Insolvenzkosten begrenzen die sinnvolle Verschuldung."}]}</script>
 <script id="qbank-9" type="application/json">{"topic": "OFIN · Kapitel 9", "engine": {"startDifficulty": "mittel", "startCount": 5, "passThreshold": 3, "onPass": "schwer", "onFail": "leicht", "followupCount": 2, "moreCount": 3}, "questions": [{"id": "m1", "difficulty": "mittel", "subtopic": "NPV & Investitionsregel", "type": "numeric", "stem": "Ein Projekt kostet heute 150 &euro; und zahlt in einem Jahr sicher 168 &euro;. Der Kapitalmarktzins betr&auml;gt 5 %. Wie hoch ist der Kapitalwert (NPV) heute (in &euro;)?", "answer": 10.0, "tolerance": 0.1, "feedback": "NPV = &minus;150 + 168/1,05 = &minus;150 + 160 = <b>10 &euro;<\/b>. NPV &gt; 0 &rarr; durchf&uuml;hren, die klassische Eingangsfrage des Investitionsblocks."}, {"id": "m2", "difficulty": "mittel", "subtopic": "SML-Fehlbewertung", "type": "single", "stem": "Eine Aktie liegt in der Rendite-Beta-Grafik OBERHALB der Wertpapiermarktlinie (SML). Was folgt daraus f&uuml;r einen CAPM-Anleger?", "options": ["Die Aktie ist &uuml;berbewertet, ihre erwartete Rendite liegt unter der CAPM-Sollrendite", "Die Aktie ist fair bewertet, Abweichungen von der SML sind im CAPM ohne jede Bedeutung", "Die Aktie hat zwingend ein negatives Beta, sonst k&ouml;nnte sie nicht &uuml;ber der SML liegen", "Die Aktie ist unterbewertet, ihre erwartete Rendite liegt &uuml;ber der CAPM-Sollrendite"], "answer": "Die Aktie ist unterbewertet, ihre erwartete Rendite liegt &uuml;ber der CAPM-Sollrendite", "feedback": "Oberhalb der SML hei&szlig;t: F&uuml;r ihr Marktrisiko (Beta) bietet die Aktie MEHR Rendite als das CAPM verlangt, sie ist <b>unterbewertet<\/b>, Anleger kaufen, der Preis steigt, bis sie wieder auf der Linie liegt."}, {"id": "m3", "difficulty": "mittel", "subtopic": "Gordon-Growth", "type": "numeric", "stem": "Eine Aktie zahlt in einem Jahr eine Dividende von 3 &euro;, die danach dauerhaft mit 4 % pro Jahr w&auml;chst. Die Eigenkapitalkosten betragen 9 %. Wie hoch ist der faire Aktienkurs nach Gordon-Growth (in &euro;)?", "answer": 60.0, "tolerance": 0.5, "feedback": "P<sub>0<\/sub> = D<sub>1<\/sub> / (r<sub>E<\/sub> &minus; g) = 3 / (0,09 &minus; 0,04) = 3 / 0,05 = <b>60 &euro;<\/b>. Wachstum g wird im Nenner ABGEZOGEN, beliebte Fehlerfalle."}, {"id": "m4", "difficulty": "mittel", "subtopic": "Modigliani-Miller I", "type": "single", "stem": "Auf einem perfekten Kapitalmarkt ohne Steuern gilt das Modigliani-Miller-Theorem I. Welche Aussage ist dann richtig?", "options": ["Der Unternehmenswert sinkt, sobald das Unternehmen neues Eigenkapital ausgibt", "Der Unternehmenswert wird allein durch die H&ouml;he des Fremdkapitals bestimmt", "Der Unternehmenswert ist unabh&auml;ngig von der gew&auml;hlten Kapitalstruktur", "Der Unternehmenswert steigt mit jedem zus&auml;tzlichen Euro an Fremdkapital"], "answer": "Der Unternehmenswert ist unabh&auml;ngig von der gew&auml;hlten Kapitalstruktur", "feedback": "MM I: Auf einem perfekten Kapitalmarkt ohne Steuern ist der Unternehmenswert von der Finanzierung <b>unabh&auml;ngig<\/b>, zwei gleiche Unternehmen mit verschiedener Kapitalstruktur m&uuml;ssen gleich viel wert sein, sonst ist Arbitrage m&ouml;glich."}, {"id": "m5", "difficulty": "mittel", "subtopic": "Portfolio-Beta", "type": "single", "stem": "Ein Portfolio besteht aus mehreren Aktien. Wie ergibt sich das Beta des Portfolios?", "options": ["Als Beta der gr&ouml;&szlig;ten Position, kleinere Positionen z&auml;hlen nicht", "Als einfache Summe der Einzel-Betas aller enthaltenen Aktien", "Als mit den Portfoliogewichten gewichtetes Mittel der Einzel-Betas", "Als Produkt der Einzel-Betas, gewichtet mit den paarweisen Korrelationen"], "answer": "Als mit den Portfoliogewichten gewichtetes Mittel der Einzel-Betas", "feedback": "Beta ist LINEAR: &beta;<sub>P<\/sub> = w<sub>1<\/sub>&beta;<sub>1<\/sub> + w<sub>2<\/sub>&beta;<sub>2<\/sub> + &hellip; Anders als die Standardabweichung (dort entscheidet die Korrelation!) mittelt sich Beta einfach mit den Gewichten."}, {"id": "s1", "difficulty": "schwer", "subtopic": "Binomialmodell", "type": "numeric", "stem": "Eine Aktie kostet heute 80 &euro; und steht in einem Jahr bei 96 &euro; (up) oder 72 &euro; (down). Der sichere Zins betr&auml;gt 5 %. Was ist ein Call mit Basispreis 84 &euro; heute wert (Binomialmodell, in &euro;)?", "answer": 5.71, "tolerance": 0.05, "feedback": "C<sub>u<\/sub> = 96 &minus; 84 = 12, C<sub>d<\/sub> = 0. &Delta; = (12 &minus; 0)/(96 &minus; 72) = 0,5. Duplikation: C = 0,5 &middot; 80 &minus; 0,5 &middot; 72/1,05 = 40 &minus; 34,29 = <b>5,71 &euro;<\/b>."}, {"id": "s2", "difficulty": "schwer", "subtopic": "Put-Call-Parit&auml;t", "type": "numeric", "stem": "Ein Call auf eine Aktie (Kurs 70 &euro;) mit Basispreis 77 &euro; und Laufzeit 1 Jahr kostet 4,50 &euro;. Der sichere Zins betr&auml;gt 10 %. Was kostet der Put mit gleichem Basispreis und gleicher Laufzeit (Put-Call-Parit&auml;t, in &euro;)?", "answer": 4.5, "tolerance": 0.05, "feedback": "P = C &minus; S + K/(1+r) = 4,50 &minus; 70 + 77/1,10 = 4,50 &minus; 70 + 70 = <b>4,50 &euro;<\/b>. Weil der Barwert des Basispreises hier genau dem Aktienkurs entspricht, kosten Call und Put gleich viel."}, {"id": "s3", "difficulty": "schwer", "subtopic": "Markteffizienz", "type": "single", "stem": "Ein Fondsmanager erzielt dauerhaft &Uuml;berrenditen, indem er ausschlie&szlig;lich historische Kursmuster auswertet. Welche Form der Informationseffizienz ist damit verletzt?", "options": ["Nur die starke Effizienz, erst sie erfasst auch &ouml;ffentliche Kursinformationen", "Keine der drei Stufen, Chartanalyse ist mit jeder Effizienzform gut vereinbar", "Nur die mittelstarke Effizienz, die Kurshistorie ist keine &ouml;ffentliche Information", "Bereits die schwache Effizienz, sie schlie&szlig;t Gewinne aus der Kurshistorie aus"], "answer": "Bereits die schwache Effizienz, sie schlie&szlig;t Gewinne aus der Kurshistorie aus", "feedback": "Schon die <b>schwache<\/b> Effizienz sagt: Alle Informationen aus vergangenen Kursen stecken im Preis, systematische Gewinne aus Chartanalyse d&uuml;rfte es dann nicht geben. Mittelstark und stark umfassen die schwache Stufe jeweils mit."}, {"id": "s4", "difficulty": "schwer", "subtopic": "WACC", "type": "numeric", "stem": "Ein Unternehmen ist zu 20 % mit Fremdkapital (Zins 4 %) und zu 80 % mit Eigenkapital (Kosten 11 %) finanziert (Marktwerte, keine Steuern). Wie hoch sind die durchschnittlichen Kapitalkosten (WACC, in %)?", "answer": 9.6, "tolerance": 0.1, "feedback": "WACC = 0,2 &middot; 4 % + 0,8 &middot; 11 % = 0,8 % + 8,8 % = <b>9,6 %<\/b>. Gewichte immer zu MARKTwerten bilden, und ohne Steuern gibt es keinen Tax-Shield-Abschlag."}, {"id": "s5", "difficulty": "schwer", "subtopic": "MM II & EK-Kosten", "type": "single", "stem": "Nach Modigliani-Miller II (ohne Steuern): Was passiert mit den Eigenkapitalkosten, wenn der Verschuldungsgrad steigt?", "options": ["Sie sinken mit dem Verschuldungsgrad, Fremdkapital ist die g&uuml;nstigere Quelle", "Sie steigen linear mit dem Verschuldungsgrad, der WACC bleibt dabei konstant", "Sie steigen nur dann, wenn auch der Fremdkapitalzins mit der Verschuldung steigt", "Sie bleiben konstant, daf&uuml;r sinkt der WACC mit jedem Euro an Fremdkapital"], "answer": "Sie steigen linear mit dem Verschuldungsgrad, der WACC bleibt dabei konstant", "feedback": "MM II: e = k + (k &minus; i) &middot; FK/EK, die EK-Kosten steigen <b>linear<\/b> im Verschuldungsgrad, weil die Eigent&uuml;mer das Hebelrisiko tragen. Der Mix-Effekt hebt sich auf: Der WACC bleibt konstant."}, {"id": "s6", "difficulty": "schwer", "subtopic": "CAPM-Sollrendite", "type": "numeric", "stem": "Der risikolose Zins betr&auml;gt 3 %, die erwartete Marktrendite 8 %. Eine Aktie hat ein Beta von 0,8. Welche Rendite verlangt das CAPM (in %)?", "answer": 7.0, "tolerance": 0.05, "feedback": "&mu; = r<sub>f<\/sub> + (&mu;<sub>M<\/sub> &minus; r<sub>f<\/sub>) &middot; &beta; = 3 % + (8 % &minus; 3 %) &middot; 0,8 = 3 % + 4 % = <b>7 %<\/b>. Die Marktrisikopr&auml;mie (5 %) wird mit Beta skaliert, nicht die Marktrendite."}, {"id": "l1", "difficulty": "leicht", "subtopic": "Zeitmanagement", "type": "single", "stem": "In der Klausur h&auml;ngst du seit 12 Minuten an einer 6-Punkte-Teilaufgabe fest. Was ist in der Regel die beste Strategie?", "options": ["Sofort zur MC-Sektion springen und alle offenen Fragen zuf&auml;llig ankreuzen", "Markieren, weitergehen und am Ende mit frischem Blick zur&uuml;ckkommen", "Die gesamte Aufgabe streichen und auch alle sp&auml;teren Teilaufgaben auslassen", "Weiterrechnen, bis die Teilaufgabe vollst&auml;ndig gel&ouml;st ist, egal wie lange"], "answer": "Markieren, weitergehen und am Ende mit frischem Blick zur&uuml;ckkommen", "feedback": "Als Faustregel gilt: 1 Punkt &asymp; 1 Minute. Wer 12 Minuten in 6 Punkte steckt, bezahlt mit sicheren Punkten an anderer Stelle. Markieren, weiterziehen, sp&auml;tere Teilaufgaben sind oft unabh&auml;ngig l&ouml;sbar."}, {"id": "l2", "difficulty": "leicht", "subtopic": "MC-Strategie", "type": "single", "stem": "Bei einer MC-Rechenfrage weichen zwei der Antwortoptionen um Gr&ouml;&szlig;enordnungen von deinem &Uuml;berschlag ab. Was tust du am besten zuerst?", "options": ["Die unplausiblen Optionen streichen und nur die restlichen genau pr&uuml;fen", "Die Frage sofort &uuml;berspringen, &Uuml;berschl&auml;ge sind zu unzuverl&auml;ssig", "Die l&auml;ngste Antwortoption w&auml;hlen, weil sie meistens die richtige ist", "Alle Optionen einzeln und vollst&auml;ndig durchrechnen, um sicherzugehen"], "answer": "Die unplausiblen Optionen streichen und nur die restlichen genau pr&uuml;fen", "feedback": "Das Ausschlussverfahren ist der schnellste Hebel im MC-Teil: Vorzeichen, Gr&ouml;&szlig;enordnung und Einheiten entlarven Distraktoren in Sekunden, selbst blindes Raten verbessert sich so von 20 % auf 33 % Trefferchance."}, {"id": "l3", "difficulty": "leicht", "subtopic": "Ewige Rente", "type": "single", "stem": "Eine ewige Rente zahlt jedes Jahr einen festen Betrag. Was passiert mit ihrem Barwert, wenn der Marktzins steigt?", "options": ["Der Barwert sinkt, die feste Zahlung wird st&auml;rker abgezinst", "Der Barwert wird unendlich gro&szlig;, der Zinseffekt verst&auml;rkt sich selbst", "Der Barwert steigt, h&ouml;here Zinsen bedeuten ja h&ouml;here Ertr&auml;ge", "Der Barwert bleibt gleich, die Zahlung selbst &auml;ndert sich ja nicht"], "answer": "Der Barwert sinkt, die feste Zahlung wird st&auml;rker abgezinst", "feedback": "PV = C/r: Steigt r, sinkt der Barwert, k&uuml;nftige feste Zahlungen sind bei h&ouml;herem Vergleichszins heute weniger wert. Derselbe Mechanismus dr&uuml;ckt auch Anleihekurse, wenn der Marktzins steigt."}, {"id": "l4", "difficulty": "leicht", "subtopic": "Diversifikation", "type": "single", "stem": "Welches Risiko l&auml;sst sich durch breite Diversifikation eines Aktienportfolios (nahezu) beseitigen?", "options": ["Das Zinsrisiko der risikolosen Anlage, die im Portfolio enthalten ist", "Das unsystematische, titelspezifische Risiko der einzelnen Aktien", "Das gesamte Risiko, ein breites Portfolio ist praktisch risikolos", "Das systematische Marktrisiko, das alle Aktien gemeinsam trifft"], "answer": "Das unsystematische, titelspezifische Risiko der einzelnen Aktien", "feedback": "Diversifikation gl&auml;ttet titelspezifische (unsystematische) Risiken weg. Das systematische Marktrisiko bleibt, und nur DAF&Uuml;R zahlt der Markt laut CAPM eine Risikopr&auml;mie."}, {"id": "l5", "difficulty": "leicht", "subtopic": "Optionsgrundlagen", "type": "single", "stem": "Du willst das Recht besitzen, eine Aktie in einem Jahr zu einem heute festgelegten Preis zu verkaufen. Welche Optionsposition brauchst du?", "options": ["Short Put, also der Verkauf einer Verkaufsoption", "Long Put, also der Kauf einer Verkaufsoption", "Short Call, also der Verkauf einer Kaufoption", "Long Call, also der Kauf einer Kaufoption"], "answer": "Long Put, also der Kauf einer Verkaufsoption", "feedback": "Verkaufsrecht = Put, und das RECHT (nicht die Pflicht) hat immer die Long-Seite: <b>Long Put<\/b>. Die Short-Seite kassiert die Pr&auml;mie und tr&auml;gt daf&uuml;r die Pflicht."}]}</script>
 
+
 <script>
 "use strict";
 (function(){
   /* ================= KONFIG ================= */
-  var ZUGANG = "probe";                    /* "probe" | "komplett" · Komplett-Build: auf "komplett" setzen ({{LIZENZ_TOKEN}}) */
+  var ZUGANG = "probe";
+  var VORMERK_URL = "{{VORMERK_ENDPOINT}}"; /* VPS-Endpoint: nimmt Vormerkung an, verschickt Mail via Brevo */                    /* "probe" | "komplett" · Komplett-Build: auf "komplett" setzen ({{LIZENZ_TOKEN}}) */
   var KLAUSUR = "2026-07-29", FRIST = "2026-07-28";
   var QP = {};
   try { QP = Object.fromEntries(new URLSearchParams(location.search)); } catch(e){}
@@ -2326,10 +2557,15 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
 
   /* ================= SPEICHER (je Geraet) ================= */
   var KEY = "bwlk-ofin-v1";
+  var NKAP=9, FREI_KAP=3, FREI_KAP_2=6;
   function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e){ return {}; } }
   function save(){ try { localStorage.setItem(KEY, JSON.stringify(ST)); } catch(e){} }
   var ST = load();
   ST.done = ST.done || {}; ST.weak = ST.weak || {}; ST.quiz = ST.quiz || {};
+  /* Demo-Kaeufe werden nicht mehr im Geraet gespeichert: bei jedem Start zuruecksetzen.
+     Echte Freischaltung kommt spaeter uebers Backend (Zahlung -> Zugangsdaten). */
+  ST.owned = {}; ST.hoOwned = {}; ST.pkg = null; ST.hoAll = false; ST.qa = null;
+  save();
 
   /* ================= THEME (Hell = Standard) ================= */
   function setTheme(t){
@@ -2362,8 +2598,23 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
     var c4 = $("cd4");  if(c4)   c4.textContent   = df + (df===1?" Tag":" Tage");
   })();
 
+  /* ================= PREISE (Fakten-Kanon / Simons Vorgaben) ================= */
+  var PRICE = {
+    kapitel:6.90, komplett:39.90, komplettAlt:62.10,
+    handout:8.90, handoutPaket:49.90, handoutPaketAlt:80.10,
+    gesamt:79.90, gesamtAlt:142.20, qa:19.90
+  };
+  function euro(v){ return v.toFixed(2).replace(".",",")+" €"; }
+  function ownedChapters(){ var c=0; for(var i=1;i<=NKAP;i++){ if(i!==FREI_KAP && ST.owned[i]) c++; } return c; }
+  function spentEuro(){ return ownedChapters()*PRICE.kapitel; }              /* auf komplett angerechnet */
+  function komplettRest(){ return Math.max(0, PRICE.komplett - spentEuro()); } /* Restpreis fuer OFIN Klausur-App */
+  function hasKomplett(){ return ZUGANG==="komplett" || ST.pkg==="komplett"; }
+  function hasAllHandouts(){ return !!ST.hoAll; }
+  function handoutUnlocked(n){ return hasAllHandouts() || !!ST.hoOwned[n]; }
+
   /* ================= ZUSTAND JE KAPITEL ================= */
-  function unlocked(n){ return ZUGANG==="komplett" || n===3; }
+  function hasFree(){ return false; /* {{KONTO_BACKEND}}: 2. Gratis-Kapitel (FREI_KAP_2) wird serverseitig via /api/me freigeschaltet, kein Link-Hack */ }
+  function unlocked(n){ return hasKomplett() || n===FREI_KAP || (n===FREI_KAP_2 && hasFree()) || !!ST.owned[n]; }
   function activeN(){
     for(var i=0;i<LESSONS.length;i++){ var n=LESSONS[i].n; if(unlocked(n) && !ST.done[n]) return n; }
     return null;
@@ -2373,11 +2624,11 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
     if(!unlocked(n)) return "locked";
     return (n===activeN()) ? "active" : "open";
   }
-  function doneCount(){ var c=0; for(var i=1;i<=10;i++) if(ST.done[i]) c++; return c; }
+  function doneCount(){ var c=0; for(var i=1;i<=NKAP;i++) if(ST.done[i]) c++; return c; }
 
   /* ================= HUB ================= */
   function renderHub(){
-    var dc = doneCount(), pct = dc*10, an = activeN();
+    var dc = doneCount(), pct = Math.round(dc*100/NKAP), an = activeN();
     $("hubRing").setAttribute("stroke-dasharray", pct+" 100");
     $("hubRingVal").textContent = pct+"%";
     $("statDone").textContent = dc;
@@ -2406,15 +2657,15 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
       $("hubNextWrap").hidden = true;
     } else if(an===null){
       $("hubTitle").innerHTML = "Kapitel 3 geschafft.";
-      $("hubSub").textContent = "Stark. Die übrigen 9 Kapitel schaltest du mit OFIN komplett frei.";
+      $("hubSub").textContent = "Stark. Die übrigen 9 Kapitel schaltest du mit OFIN Klausur-App frei.";
       $("hubProgSub").textContent = "Dein Gratis-Kapitel ist erledigt. Wiederholen geht jederzeit.";
-      $("hubCta").innerHTML = "OFIN komplett freischalten <svg class='i arrow'><use href='#i-arrow'/></svg>";
+      $("hubCta").innerHTML = "OFIN Klausur-App freischalten <svg class='i arrow'><use href='#i-arrow'/></svg>";
       $("hubCta").onclick = function(){ show("mehr"); };
       $("hubNextWrap").hidden = true;
     } else {
       var L = lesson(an);
       $("hubTitle").innerHTML = dc===0 ? "Dein Weg zur OFIN&#8209;Klausur." : "Weiter geht&rsquo;s.";
-      $("hubSub").textContent = "Noch "+(9-dc)+" Kapitel bis zur Klausur am 29.07. bei Prof. Schmeling.";
+      $("hubSub").textContent = "Noch "+(NKAP-dc)+" Kapitel bis zur Klausur am 29.07. bei Prof. Schmeling.";
       $("hubProgSub").textContent = "Kapitel "+an+" ist "+(ST.quiz[an]?"angefangen":"offen")+" und wartet auf dich.";
       $("hubCta").innerHTML = "Kapitel "+an+" "+(ST.quiz[an]?"fortsetzen":"starten")+" <svg class='i arrow'><use href='#i-arrow'/></svg>";
       $("hubCta").onclick = function(){ openLesson(an); };
@@ -2428,7 +2679,7 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
     var dw = $("hubDoneWrap");
     if(dc>0){
       dw.hidden = false;
-      var names=[]; for(var i=1;i<=10;i++) if(ST.done[i]) names.push("Kapitel "+i);
+      var names=[]; for(var i=1;i<=NKAP;i++) if(ST.done[i]) names.push("Kapitel "+i);
       $("hubDoneT").textContent = dc===1 ? plainT(parseInt(Object.keys(ST.done)[0],10)) : names.join(", ");
       $("hubDoneS").textContent = dc===1 ? "Abgeschlossen, jederzeit wieder anschauen" : dc+" Kapitel abgeschlossen";
     } else dw.hidden = true;
@@ -2475,9 +2726,10 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
     wrap.innerHTML = html;
     drawRail(wrap);
     var dc = doneCount();
+    var full = hasKomplett();
     $("pathSum").innerHTML = "<b>9 Kapitel</b> · 144 Selbsttest-Fragen. " +
-      (ZUGANG==="probe" ? "Kapitel 3 schon gratis spielbar, der Rest als Vorschau." : (dc===0 ? "Alle Kapitel freigeschaltet." : dc+" von 9 erledigt, weiter geht&rsquo;s."));
-    $("pfadCtaWrap").hidden = (ZUGANG!=="probe");
+      (!full ? "Kapitel 3 gratis, weitere schaltest du einzeln oder komplett frei." : (dc===0 ? "Alle Kapitel freigeschaltet." : dc+" von 9 erledigt, weiter geht&rsquo;s."));
+    $("pfadCtaWrap").hidden = full;
   }
   function drawRail(wrap){
     var svg = wrap.querySelector(".railsvg"); if(!svg) return;
@@ -2499,14 +2751,14 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
     svg.setAttribute("viewBox","0 0 "+W+" "+H); svg.setAttribute("preserveAspectRatio","none");
     svg.innerHTML = "<defs><linearGradient id='pgrad' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='var(--accent-2)'/><stop offset='1' stop-color='var(--accent)'/></linearGradient></defs>"+
       "<g>"+
-      "<path d='"+curve(pts)+"' fill='none' stroke='var(--hair)' stroke-width='6' stroke-linecap='round'/>"+
+      "<path d='"+curve(pts)+"' fill='none' stroke='var(--hair)' stroke-width='8' stroke-linecap='round'/>"+
       (function(){
         /* Orange nur durch erledigte Kapitel bis ins aktive; sonst nur der Einstiegs-Bogen */
         var si=ai;
         while(si>0 && stations[si-1].classList.contains("done")) si--;
         var start = (si===ai) ? Math.max(0, ai-1) : si;
         var seg = pts.slice(start, ai+1);
-        return "<path d='"+curve(seg)+"' fill='none' stroke='url(#pgrad)' stroke-width='6' stroke-linecap='round' opacity='.9'/>";
+        return "<path d='"+curve(seg)+"' fill='none' stroke='url(#pgrad)' stroke-width='8' stroke-linecap='round' opacity='.9'/>";
       })()+
       "</g>";
   }
@@ -2575,7 +2827,7 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
     steps.forEach(function(s){ var on = (+s.dataset.step===STEP); s.classList.toggle("on", on); if(on) cur=s; });
     if(STEP>MAXSTEP) MAXSTEP=STEP;
     renderSegs();
-    $("lPrev").disabled = (STEP<=1);
+    $("lPrev").disabled = (STEP<=1) || (STEP===TOTAL);
     if(STEP===TOTAL){ lNext.style.display="none"; startQuizOnce(); }
     else { lNext.style.display=""; lNext.innerHTML="Weiter <svg class='i arrow'><use href='#i-arrow'/></svg>"; }
     $("swipeHint").hidden = !(STEP<=2 && STEP<TOTAL);
@@ -2586,7 +2838,7 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
   }
   lNext.addEventListener("click", function(){ if(STEP<TOTAL){ STEP++; renderStep(); } });
   $("lPrev").addEventListener("click", function(){ if(STEP>1){ STEP--; renderStep(); } });
-  $("lSegs").addEventListener("click", function(e){
+  $("lSegs").addEventListener("click", function(e){ if(STEP===TOTAL) return;
     var b=e.target.closest("button[data-go]"); if(!b || b.disabled) return;
     STEP=+b.dataset.go; renderStep();
   });
@@ -2602,7 +2854,7 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
       var t=e.target;
       if(t.closest && (t.closest("input") || t.closest(".aha") || t.closest("#qarea"))) return;
       if(dx<0 && STEP<TOTAL){ STEP++; renderStep(); }
-      else if(dx>0 && STEP>1){ STEP--; renderStep(); }
+      else if(dx>0 && STEP>1 && STEP!==TOTAL){ STEP--; renderStep(); }
     }, {passive:true});
   })();
 
@@ -2794,7 +3046,7 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
       ST.weak[n]=Object.keys(wrongSubs);
       save();
       var done=document.createElement("div"); done.className="finish";
-      done.innerHTML="<b>Dein Ergebnis: "+totalCorrect+" von "+totalAnswered+" richtig ("+pct+"&nbsp;%).</b><br>Den Feinschliff und deine persönlichen Fragen machen wir im Live-Q&amp;A und im Live-Klausurtraining."+
+      done.innerHTML="<b>Dein Ergebnis: "+totalCorrect+" von "+totalAnswered+" richtig ("+pct+"&nbsp;%).</b><br>Den Feinschliff und deine persönlichen Fragen machen wir in der Live-Q&amp;A-Session."+
         "<div style='margin-top:12px'><button class='btn btn-primary btn-block' id='finishChapter'>Kapitel abschließen <svg class='i arrow'><use href='#i-arrow'/></svg></button></div>";
       qarea.appendChild(done); scoreTag.textContent="Endergebnis: "+totalCorrect+" / "+totalAnswered;
       $("finishChapter").onclick=function(){ ST.done[n]=1; save(); show("hub"); };
@@ -2805,12 +3057,12 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
   /* ================= WIEDERHOLEN ================= */
   function renderRep(){
     var list=$("repList"), empty=$("repEmpty"), html="", any=false;
-    for(var i=1;i<=10;i++){
+    for(var i=1;i<=NKAP;i++){
       var subs=ST.weak[i];
       if(!ST.quiz[i]) continue;
       any=true;
       var chips=(subs&&subs.length) ? subs.map(function(s){ return "<span class='pill'>"+s+"</span>"; }).join("") : "<span class='pill gratis'><span class='dot'></span> alles saß</span>";
-      html+="<div class='repcard'><div class='rh' style='display:flex;gap:11px;align-items:flex-start'><span style='width:34px;height:34px;flex:none;border-radius:50%;border:2px solid var(--silver);display:grid;place-items:center;color:var(--text-2)'><svg class='i' style='width:17px'><use href='#k-"+i+"'/></svg></span><div><b>Kapitel "+i+" · "+lesson(i).t+"</b><br><small class='num'>Letzter Selbsttest: "+ST.quiz[i].c+" von "+ST.quiz[i].n+" richtig</small></div></div>"+
+      html+="<div class='repcard'><div class='rh' style='display:flex;gap:11px;align-items:center;justify-content:flex-start'><span style='width:34px;height:34px;flex:none;border-radius:50%;border:2px solid var(--silver);display:grid;place-items:center;color:var(--text-2)'><svg class='i' style='width:17px'><use href='#k-"+i+"'/></svg></span><div><b>Kapitel "+i+" · "+lesson(i).t+"</b><br><small class='rep-last'>Letzter Selbsttest: "+ST.quiz[i].c+" von "+ST.quiz[i].n+" richtig</small></div></div>"+
         "<div class='repchips'>"+chips+"</div>"+
         "<button class='btn btn-silver btn-sm' data-rep='"+i+"'>Selbsttest wiederholen</button></div>";
     }
@@ -2832,42 +3084,215 @@ body:not([data-screen="hub"]) .tb-in{justify-content:flex-end}
   }
   if(chatSend){ chatSend.addEventListener("click", sendChat); chatInput.addEventListener("keydown", function(e){ if(e.key==="Enter"){ e.preventDefault(); sendChat(); } }); }
 
-  /* ================= MEHR / ZUGANG ================= */
-  (function(){
-    if(ZUGANG==="komplett"){
-      $("accTitle").textContent="Komplett-Zugang";
-      $("accSub").textContent="Alle 9 Kapitel frei · Fortschritt auf diesem Gerät";
-      $("accBuyWrap").hidden=true;
-      $("licNote").hidden=false;
-    } else {
-      $("accBuy").addEventListener("click", function(){ openSheet(null); });
-    }
-    $("pfadCta").addEventListener("click", function(){ openSheet(null); });
-  })();
+  /* ================= FREISCHALT-STORE (klickbare Kauf-Demo) ================= */
+  var sheetOv=$("sheetOv"), STORE_CTX=null;
+  var RABATT_MSG="Wir wollen nicht daran verdienen, dass du unentschlossen warst. Deswegen zahlst du am Ende nur den stark rabattierten Gesamtpreis von "+euro(PRICE.komplett)+". Danke für dein Vertrauen, wir freuen uns auf dein Feedback.";
+  var TOPICS={
+    1:["Arbitragefreiheit", "Barwert", "Kapitalwert", "Fisher-Separation"],
+    2:["Dividendenbarwertmodell", "Gordon-Growth", "Kurs-Gewinn-Verhältnis"],
+    3:["Barwert", "Annuität", "ewige Rente", "Nullkupon", "Effektivrendite"],
+    4:["Erwartungswert", "Varianz", "Risikoprämie"],
+    5:["Diversifikation", "Kovarianz", "effizienter Rand"],
+    6:["Beta", "Marktrisikoprämie", "Wertpapierlinie", "Kapitalkosten"],
+    7:["Call", "Put", "Binomialmodell", "Put-Call-Parität"],
+    8:["Kapitalstruktur", "Leverage", "Steuervorteil"],
+    9:["Aufgabentypen", "Rechenwege", "Musterlösungen", "Prüfungsstrategie"]
+  };
+  var QASLOTS=["Mo 27.07., 20:00", "Di 29.07., 17:30", "Di 29.07., 20:00"];
 
-  /* ================= VORMERK-SHEET ================= */
-  var sheetOv=$("sheetOv");
-  function openSheet(kontext){
-    $("sheetSub").innerHTML = (kontext ? "<b>"+kontext+"</b> ist Teil von &bdquo;OFIN komplett&ldquo;. " : "")+
-      "Alle 9 Kapitel als interaktive Lektionen mit Selbsttests, dazu Live&#8209;Q&amp;A in kleiner Gruppe.";
-    $("sheetForm").style.display=""; $("sheetOk").style.display="none"; $("sheetErr").style.display="none";
-    sheetOv.classList.add("on");
-    document.body.style.overflow="hidden";
+  /* ---- Vormerkung statt Sofort-Kauf ---- */
+  function productLabel(typ,n,slot){
+    if(typ==="kapitel") return "Lektion Kap "+n+" · "+plainT(n)+" · "+euro(PRICE.kapitel);
+    if(typ==="komplett") return "OFIN Klausur-App · "+euro(PRICE.komplett);
+    if(typ==="gesamt") return "OFIN Klausur-App + alle Handouts · "+euro(PRICE.gesamt);
+    if(typ==="handoutpaket") return "Alle 9 Handouts als Paket · "+euro(PRICE.handoutPaket);
+    if(typ==="handout") return "Handout Kap "+n+" · "+plainT(n)+" · "+euro(PRICE.handout);
+    if(typ==="qa") return "Live-Q&A · "+slot+" Uhr · "+euro(PRICE.qa);
+    return "";
   }
+  function renderOrderForm(label){
+    $("storeBody").innerHTML =
+      '<button type="button" class="store-link" data-back>&#8249; Zurück zur Auswahl</button>'+
+      '<div class="store-status" style="margin-top:8px">Deine Auswahl: <b>'+label+'</b></div>'+
+      '<form id="vmForm" novalidate style="margin-top:12px">'+
+        '<div class="field"><label for="vmName">Dein Name *</label><input type="text" id="vmName" autocomplete="given-name" placeholder="z. B. Lena" required>'+
+        '<p style="font-size:12px;color:var(--text-3);line-height:1.45;margin:5px 0 0">Mit diesem Namen sprechen wir dich in E-Mails an. Und so heißt du im Gruppenchat, wenn du etwas schreibst.</p></div>'+
+        '<div class="field"><label for="vmMail">E-Mail-Adresse *</label><input type="email" id="vmMail" autocomplete="email" placeholder="name@beispiel.de" required></div>'+
+        '<div class="field"><label for="vmTel">Handynummer <span style="font-weight:400;color:var(--text-3)">(optional)</span></label><input type="tel" id="vmTel" autocomplete="tel" inputmode="tel" placeholder="z. B. 0151 23456789"></div>'+
+        '<label class="chk"><input type="checkbox" id="vmDs"><span>Ich bin einverstanden, dass meine Angaben zur Vormerkung verarbeitet werden. Details in der Datenschutzerklärung (in den Einstellungen).</span></label>'+
+        '<div class="err" id="vmErr">Bitte Name, E-Mail-Adresse und Einverständnis ausfüllen.</div>'+
+        '<button type="submit" class="btn btn-primary btn-block">Vormerkung absenden</button>'+
+      '</form>'+
+      '<div class="ok" id="vmOk">Danke! Deine Vormerkung ist notiert. Wir melden uns per E-Mail, sobald dein Zugang bereitsteht.</div>'+
+      '<p class="placeholder-note" style="margin-top:12px">Kostenlos und unverbindlich, es entsteht keine Zahlungspflicht. Bezahlung und Zugangsdaten folgen später im separaten Checkout.</p>';
+    $("vmForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      var nm=$("vmName").value.trim().replace(/[<>]/g,""), ml=$("vmMail").value.trim(), tel=$("vmTel").value.trim(), ds=$("vmDs").checked;
+      if(!nm || !ml || ml.indexOf("@")<1 || !ds){ $("vmErr").style.display="block"; return; }
+      $("vmErr").style.display="none";
+      var data={name:nm, produkt:label, email:ml, handynummer:tel, zeit:new Date().toISOString()};
+      ST.vm = ST.vm || []; ST.vm.push(data); save();
+      if(/^https?:/.test(VORMERK_URL)){
+        try { fetch(VORMERK_URL, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(data)}).catch(function(){}); } catch(e2){}
+      }
+      $("vmForm").style.display="none";
+      $("vmOk").innerHTML="<b>Danke, "+nm+"!</b> Deine Vormerkung ist notiert. Wir melden uns per E-Mail, sobald dein Zugang bereitsteht.";
+      $("vmOk").style.display="block";
+    });
+  }
+
+
+  /* ---- BKBC-Konfigurator: Checkout-Hook an den bestehenden Flow ---- */
+  window.bkbcOnCheckout = function(p){
+    var art = p.handouts ? "Klausur-Check + alle Handouts" : "Klausur-Check";
+    renderOrderForm("Fächer-Paket: " + p.faecher.join(" + ") + " · " + art + " · " + euro(p.total));
+  };
+
+  /* ---- Zugangs-Karte in den Einstellungen ---- */
+  function updateAccessCard(){
+    var at=$("accTitle"), as=$("accSub"), bw=$("accBuyWrap"), ln=$("licNote"), ab=$("accBuy");
+    if(ZUGANG==="komplett"){
+      at.textContent="Komplett-Zugang"; as.textContent="Alle 9 Kapitel frei · Fortschritt auf diesem Gerät";
+      bw.hidden=true; if(ln) ln.hidden=false; return;
+    }
+    if(ST.pkg==="komplett" && ST.hoAll){ at.textContent="Gesamtpaket"; as.textContent="Alle 9 Kapitel und alle Handouts frei"; bw.hidden=true; }
+    else if(ST.pkg==="komplett"){ at.textContent="OFIN Klausur-App"; as.textContent="Alle 9 Kapitel frei"+(ST.hoAll?" · Handouts inklusive":""); bw.hidden=true; }
+    else {
+      var oc=ownedChapters();
+      at.textContent="Probe-Zugang";
+      as.textContent=oc>0 ? (oc+" Kapitel einzeln frei · Kapitel 3 gratis") : "Kapitel 3 frei · restliche Kapitel gesperrt";
+      bw.hidden=false;
+      if(ab) ab.innerHTML="OFIN Klausur-App freischalten · "+euro(komplettRest())+(spentEuro()>0?" <small style='font-weight:600'>(angerechnet)</small>":"");
+    }
+  }
+
+  /* ---- Store-Rendering ---- */
+  function pkgRow(title, sub, price, altPrice, buy, feat){
+    return '<div class="store-pkgrow'+(feat?' feat':'')+'">'+
+      '<div class="pkgr-t"><b>'+title+'</b><small>'+sub+'</small></div>'+
+      '<div class="pkgr-p">'+euro(price)+(altPrice?'<s>'+euro(altPrice)+'</s>':'')+'</div>'+
+      '<button class="pkgr-go" data-buy="'+buy+'">Freischalten</button>'+
+    '</div>';
+  }
+  function renderStore(kontext){
+    var komplett=hasKomplett(), allHo=hasAllHandouts(), gesamt=komplett&&allHo;
+    var oc=ownedChapters(), spent=spentEuro(), rest=komplettRest(), nextP=Math.min(PRICE.kapitel, rest);
+    var H=[];
+
+    /* Rabatt-Satz dauerhaft, sobald freigeschaltet (nicht im echten Komplett-Build) */
+    if(ZUGANG!=="komplett"){
+      if(gesamt) H.push('<div class="store-rabatt"><b>Alles freigeschaltet.</b>Du hast das Gesamtpaket, alle 9 Kapitel und alle Handouts sind frei, dazu eine Live-Q&amp;A gratis. Danke für dein Vertrauen, wir freuen uns auf dein Feedback.</div>');
+      else if(komplett) H.push('<div class="store-rabatt"><b>Alles freigeschaltet.</b>'+RABATT_MSG+'</div>');
+    }
+
+    /* Fair-Hinweis / Status (nur solange nicht komplett) */
+    if(!komplett){
+      var st;
+      if(oc>0) st="Du hast <b>"+oc+" Kapitel</b> einzeln ("+euro(spent)+"). Voll auf OFIN Klausur-App angerechnet, es fehlen nur noch <b>"+euro(rest)+"</b>.";
+      else st="Wir wollen nicht daran verdienen, dass du zuerst einzelne Inhalte testen willst! Solltest du am Anfang die höheren Einzelpreise wählen und dich später für das Gesamtpaket entscheiden, bleibt der <b>rabattierte Gesamtpreis</b> für dich reserviert.";
+      if(kontext) st="<b>"+kontext+"</b> ist noch gesperrt. "+st;
+      H.push('<div class="store-status">'+st+'</div>');
+    }
+
+    /* Pakete (kompakt) */
+    if(!gesamt){
+      H.push('<div class="sec-lbl">Pakete</div>');
+      /* Reihenfolge: guenstig -> teuer (39,90 / 49,90 / 69,90) */
+      if(!komplett){
+        H.push(pkgRow("OFIN Klausur-App","alle 10 Lektionen"+(spent>0?" · "+euro(spent)+" angerechnet":""), rest, PRICE.komplettAlt, "komplett", true));
+      }
+      if(!allHo){
+        H.push(pkgRow("Alle 9 Handouts als Paket","Aufgaben + Lösungen zu jedem Kapitel", PRICE.handoutPaket, PRICE.handoutPaketAlt, "handoutpaket", false));
+      }
+      if(!komplett){
+        H.push(pkgRow("OFIN Klausur-App + alle Handouts","Kurs + alle Handout-PDFs · inkl. 1 Live-Q&amp;A-Session gratis", Math.max(0,PRICE.gesamt-spent), PRICE.gesamtAlt, "gesamt", false));
+      }
+    }
+
+    /* Eine Kapitelliste mit zwei Preisen */
+    if(!gesamt){
+      H.push('<div class="sec-lbl">Mehrere Fächer</div>');
+      H.push(window.BKBC.markup());
+    }
+
+    /* Live-Q&A-Session (zusammengefasst, oberhalb der Einzelbuchung) */
+    var qaFree=gesamt;
+    H.push('<div class="sec-lbl">Live-Q&amp;A-Session</div>');
+    H.push('<div class="store-pkgrow"><div class="pkgr-t"><b>Live-Q&amp;A-Session</b><small>Persönliche Fragen oder ganze Klausuraufgaben vorab einsenden, in der Session ausführlich gelöst. Nachfragen ausdrücklich erwünscht.</small></div><div class="pkgr-p">'+euro(PRICE.qa)+'</div></div>');
+    H.push('<div class="store-anrech">'+(qaFree?'In deinem Paket (Klausur-App + alle Handouts) ist <b>1x Live-Q&amp;A-Session gratis</b>.':'Einzeln '+euro(PRICE.qa)+' pro Session, 1x gratis beim Kombi „Klausur-App + alle Handouts".')+'</div>');
+    if(ST.qa){
+      H.push('<div class="store-status">Gebucht: <b>'+ST.qa+' Uhr</b>. <button class="store-link" data-buy="qa" data-slot="'+ST.qa+'">Termin behalten</button></div>');
+    } else {
+      H.push('<div class="store-list">');
+      QASLOTS.forEach(function(s){
+        H.push('<div class="store-row"><span class="store-row-t">'+s+' Uhr</span><span class="store-row-r"><button class="btn btn-silver store-mini" data-buy="qa" data-slot="'+s+'">'+(qaFree?'gratis buchen':euro(PRICE.qa))+'</button></span></div>');
+      });
+      H.push('</div>');
+    }
+
+    if(!gesamt){
+      H.push('<div class="sec-lbl">Einzeln freischalten</div>');
+      H.push('<div class="store-legend"><span><i class="store-dot l"></i> Lektion (in der App)</span><span><i class="store-dot h"></i> Handout (PDF mit Lösungen)</span></div>');
+      if(!komplett && oc>0){
+        var msg;
+        if(rest<=PRICE.kapitel) msg="Deine nächste Lektion kostet nur noch <b>"+euro(rest)+"</b> und schaltet damit <b>alle 9 Kapitel</b> frei.";
+        else msg="Bereits "+euro(spent)+" angerechnet, die nächste Lektion kostet "+euro(PRICE.kapitel)+".";
+        H.push('<div class="store-anrech">'+msg+'</div>');
+      }
+      H.push('<div class="store-clist">');
+      LESSONS.forEach(function(c){
+        var n=c.n, lchip, hchip;
+        if(n===3) lchip='<span class="store-chip lchip free"><small>Lektion</small>gratis</span>';
+        else if(unlocked(n)) lchip='<span class="store-chip lchip owned"><small>Lektion</small>&#10003; frei</span>';
+        else lchip='<button class="store-chip lchip" data-buy="kapitel" data-n="'+n+'"><small>Lektion</small>'+euro(nextP)+'</button>';
+        if(handoutUnlocked(n)) hchip='<span class="store-chip hchip owned"><small>Handout</small>&#10003; frei</span>';
+        else hchip='<button class="store-chip hchip" data-buy="handout" data-n="'+n+'"><small>Handout</small>'+euro(PRICE.handout)+'</button>';
+        var topics=(TOPICS[n]||[]).map(function(k){ return '<li>'+k+'</li>'; }).join("");
+        H.push('<div class="store-crow"><div class="store-crow-top">'+
+          '<details class="store-cdet"><summary><span class="kap">Kap '+n+'</span> '+c.t+'</summary>'+
+            '<div class="store-topics"><b>Handout Kap '+n+' enthält:</b><ul>'+topics+'</ul></div></details>'+
+          '<div class="store-chips">'+lchip+hchip+'</div>'+
+        '</div></div>');
+      });
+      H.push('</div>');
+    }
+
+
+    $("storeBody").innerHTML=H.join("");
+    if(window.BKBC) window.BKBC.bind($("storeBody"));
+  }
+
+  function openSheet(kontext){ STORE_CTX=kontext||null; renderStore(STORE_CTX); sheetOv.classList.add("on"); document.body.style.overflow="hidden"; }
   function closeSheet(){ sheetOv.classList.remove("on"); document.body.style.overflow=""; }
   $("sheetClose").addEventListener("click", closeSheet);
   sheetOv.addEventListener("click", function(e){ if(e.target===sheetOv) closeSheet(); });
+  /* Sheet per Runterwischen schliessen (nur wenn oben, damit Scrollen frei bleibt) */
+  (function(){
+    var sh=sheetOv.querySelector('.sheet'); if(!sh) return;
+    var y0=null, dy=0, drag=false;
+    function start(y){ if(sh.scrollTop>0){ y0=null; drag=false; return; } y0=y; dy=0; drag=true; sh.style.transition='none'; }
+    function move(y){ if(y0===null) return; dy=y-y0; if(dy<0) dy=0; sh.style.transform='translateY('+dy+'px)'; }
+    function end(){ if(y0===null){ drag=false; return; } sh.style.transition='transform .22s ease'; if(dy>90){ closeSheet(); } sh.style.transform=''; y0=null; drag=false; }
+    sh.addEventListener('touchstart',function(e){ start(e.touches[0].clientY); },{passive:true});
+    sh.addEventListener('touchmove',function(e){ move(e.touches[0].clientY); },{passive:true});
+    sh.addEventListener('touchend',end);
+    sh.addEventListener('pointerdown',function(e){ if(e.pointerType==='touch') return; start(e.clientY); });
+    window.addEventListener('pointermove',function(e){ if(drag && e.pointerType!=='touch') move(e.clientY); });
+    window.addEventListener('pointerup',function(e){ if(drag && e.pointerType!=='touch') end(); });
+  })();
   document.addEventListener("keydown", function(e){ if(e.key==="Escape" && sheetOv.classList.contains("on")) closeSheet(); });
-  $("sheetForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    var nm=$("vmName").value.trim(), ml=$("vmMail").value.trim(), ds=$("vmDs").checked;
-    if(!nm || !ml || ml.indexOf("@")<1 || !ds){ $("sheetErr").style.display="block"; return; }
-    $("sheetErr").style.display="none";
-    $("sheetForm").style.display="none";
-    var ok=$("sheetOk");
-    ok.innerHTML="<b>Danke!</b> Deine Vormerkung ist notiert. Wir melden uns per E-Mail, sobald dein Zugang bereitsteht.";
-    ok.style.display="block";
+  $("storeBody").addEventListener("click", function(e){
+    if(e.target.closest("[data-back]")){ renderStore(STORE_CTX); return; }
+    var b=e.target.closest("[data-buy]"); if(!b) return;
+    renderOrderForm(productLabel(b.getAttribute("data-buy"), parseInt(b.getAttribute("data-n"),10), b.getAttribute("data-slot")));
   });
+
+  /* ================= MEHR / ZUGANG ================= */
+  (function(){
+    updateAccessCard();
+    var ab=$("accBuy"); if(ab) ab.addEventListener("click", function(){ openSheet(null); });
+    $("pfadCta").addEventListener("click", function(){ openSheet(null); });
+  })();
 
   /* ================= ONBOARDING (3 Schritte) ================= */
   (function(){
