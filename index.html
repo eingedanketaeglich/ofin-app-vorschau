@@ -2809,7 +2809,7 @@ window.BKBC = (function(){
     } else {
       var L = lesson(an);
       $("hubTitle").innerHTML = dc===0 ? "Dein Weg zur OFIN&#8209;Klausur." : "Weiter geht&rsquo;s.";
-      $("hubSub").textContent = "Noch "+(NKAP-dc)+" Kapitel bis zur Klausur am 29.07. bei Prof. Schmeling.";
+      $("hubSub").textContent = "Noch "+(NKAP-dc)+" Kapitel bei Prof. Schmeling.";
       $("hubProgSub").textContent = "Kapitel "+an+" ist "+(ST.quiz[an]?"angefangen":"offen")+" und wartet auf dich.";
       $("hubCta").innerHTML = "Kapitel "+an+" "+(ST.quiz[an]?"fortsetzen":"starten")+" <svg class='i arrow'><use href='#i-arrow'/></svg>";
       $("hubCta").onclick = function(){ openLesson(an); };
