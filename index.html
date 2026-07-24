@@ -878,7 +878,7 @@ window.BKBC = (function(){
   <div class="stats num">
     <div class="stat"><b id="statDone">0</b><span>erledigt</span></div>
     <div class="stat"><b id="cdBig">&hellip;</b><span>Tage bis Klausur</span></div>
-    <div class="stat"><b>160</b><span>Selbsttest&#8209;Fragen</span></div>
+    <div class="stat"><b>144</b><span>Selbsttest&#8209;Fragen</span></div>
   </div>
 
   <div class="sec-lbl">Leitsatz zum Tag</div>
@@ -2792,7 +2792,7 @@ window.BKBC = (function(){
     ];
     var day=Math.floor((new Date()-new Date(new Date().getFullYear(),0,0))/86400000);
     $("hubQuote").textContent = LEITSAETZE[day % LEITSAETZE.length];
-    if(dc===10){
+    if(dc===9){
       $("hubTitle").innerHTML = "Alle Kapitel geschafft.";
       $("hubSub").textContent = "Stark. Bis zur Klausur am 29.07. kannst du gezielt wiederholen.";
       $("hubProgSub").textContent = "Alles erledigt. Wiederhol deine wackligen Themen.";
